@@ -12,6 +12,7 @@ public class Example : MonoBehaviour
 
     List<string> commentList = new List<string>();
 
+
     private void Start()
     {
         FindObjectOfType<YoutubeComment>().BeginGetComments();
@@ -32,7 +33,7 @@ public class Example : MonoBehaviour
         text.text = "";
         foreach (var c in commentList)
         {
-            text.text += c + "\n";
+            text.text += $"{c}\n\n";
         }
     }
 
