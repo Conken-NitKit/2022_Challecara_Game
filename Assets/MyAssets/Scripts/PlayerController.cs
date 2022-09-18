@@ -1,35 +1,108 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    float horizontalKeyInput = 0;
+    float verticalKeyInput = 0;
+
+    Vector2 StartTouch = new Vector2();
+    Vector2 TouchInput = new Vector2();
+
+    Rigidbody rigid = null;
+    bool isTouch = false;
+
+    [SerializeField] Animator anim;
+
+    void Start()
+    {
+        rigid = GetComponent<Rigidbody>();
+    }
+
+    void Update()
+    {
+        if (Input.anyKey)
+        {
+            anim.SetBool ( "Walk", true );
+        }
+        else
+        {
+            anim.SetBool ( "Walk", false );
+        }
+
+        if( Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer )
+        {
+            Touch[] touches;
+
+            if(Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+                isTouch = true;
+                touches = Input.touches;
+                
+                if(isTouch = true)
+                {
+                    if (touch.phase == TouchPhase.Began)
+                    {
+                        StartTouch = touch.position;
+                        Vector3 touchPosition = touch.position;
+                        touchPosition.z = 1f;
+                    }
+                        
+                    else if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
+                    {      
+                        Vector2 position = touch.position;
+                        TouchInput = position - StartTouch;
+                    }
+                    else if (touch.phase == TouchPhase.Ended)
+                    {
+                        TouchInput = Vector2.zero;
+                    }
+                }
+            }
+
+            else
+            {
+                isTouch = false;
+            }
+        }
+
+        else
+        {
+            horizontalKeyInput = Input.GetAxis( "Horizontal" );
+            verticalKeyInput = Input.GetAxis( "Vertical" );
+        }
+
+        bool isKeyInput = ( horizontalKeyInput != 0 || verticalKeyInput != 0 || TouchInput != Vector2.zero );
+        if( isKeyInput == true )
+        {
+            Vector3 dir = rigid.velocity.normalized;
+            dir.y = 0;
+            this.transform.forward = dir;
+        }
+    }
 
     void FixedUpdate()
     {
-        if (Input.GetKey (KeyCode.UpArrow))
+        Vector3 input = new Vector3();
+        Vector3 move = new Vector3();
+        if( Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer )
         {
-            transform.position += transform.forward * speed * Time.deltaTime;
+            input = new Vector3( TouchInput.x, 0, TouchInput.y );
+            move = input.normalized * 2f;
         }
-        if (Input.GetKey (KeyCode.DownArrow)) 
+        else
         {
-            transform.position -= transform.forward * speed * Time.deltaTime;
+            input = new Vector3( horizontalKeyInput, 0, verticalKeyInput );
+            move = input.normalized * 2f;
         }
-        if (Input.GetKey(KeyCode.RightArrow)) 
-        {
-            transform.position += transform.right * speed * Time.deltaTime;
-        }
-        if (Input.GetKey (KeyCode.LeftArrow)) 
-        {
-            transform.position -= transform.right * speed * Time.deltaTime;
-        }
-        if(Input.GetMouseButton(0))
-        { 
-            var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            pos.y = 0;
-            this.transform.position = pos;
-        
-        }
+        Vector3 cameraMove = Camera.main.gameObject.transform.rotation * move;
+        cameraMove.y = 0;
+        Vector3 currentRigidVelocity = rigid.velocity;
+        currentRigidVelocity.y = 0;
+ 
+        rigid.AddForce( cameraMove - rigid.velocity, ForceMode.VelocityChange );
     }
 }
