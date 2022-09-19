@@ -11,15 +11,10 @@ public class PlayerController : MonoBehaviour
     Vector2 StartTouch = new Vector2();
     Vector2 TouchInput = new Vector2();
 
-    Rigidbody rigid = null;
     bool isTouch = false;
 
     [SerializeField] Animator anim;
-
-    void Start()
-    {
-        rigid = GetComponent<Rigidbody>();
-    }
+    [SerializeField] Rigidbody rigid;
 
     void Update()
     {
