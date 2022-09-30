@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// コメントを取得して扱うクラス
+/// </summary>
 public class Comments : MonoBehaviour
 {
     
@@ -12,6 +15,10 @@ public class Comments : MonoBehaviour
         FindObjectOfType<YoutubeComment>().BeginGetComments();
     }
 
+    /// <summary>
+    /// コメントを取得した時に実行する
+    /// UseCommentTestの部分を実際の攻撃の実装に置き換えると良い
+    /// </summary>
     private void OnComment(List<Comment> comments)
     {
         foreach(var c in comments)
@@ -25,6 +32,10 @@ public class Comments : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// コメントを扱うテスト
+    /// Debug.Logの部分を実際の処理に変更するといいと思います
+    /// </summary>
     private IEnumerator UseCommentTest(string comment)
     {
         Debug.Log(comment);
