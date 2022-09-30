@@ -421,11 +421,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 880517406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e22449600ed04ea68f8216291718bc8, type: 3}
+  m_Script: {fileID: 11500000, guid: bda77a17d5e23443583e6a3be16c246f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sphere: {fileID: 585606225}
-  text: {fileID: 966155963}
 --- !u!1 &966155961
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,15 +598,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc0e9635a02f4bbe97267b274838d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  APIKEY: 
-  VideoID: 
-  GetCommentInterval: 0.1
+  APIKEY: AIzaSyDW0fXdOajeJEzoYYgrANMd1UwH88SCr1E
+  VideoID: PnQkIUhAp88
+  GetCommentInterval: 1
   playOnAwake: 0
   onComment:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 880517411}
-        m_TargetAssemblyTypeName: Example, Assembly-CSharp
+        m_TargetAssemblyTypeName: Comments, Assembly-CSharp
         m_MethodName: OnComment
         m_Mode: 0
         m_Arguments:
