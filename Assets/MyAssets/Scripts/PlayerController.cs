@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// プレイヤーを十字キーとタップで移動させ、移動している方向に回転するようにした
+/// </summary>
+
 public class PlayerController : MonoBehaviour
 {
     float horizontalKeyInput = 0;
