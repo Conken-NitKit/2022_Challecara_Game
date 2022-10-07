@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
-/// プレイヤーを十字キーとタップで移動させ、移動している方向に回転するようにした
+/// プレイヤーの移動処理クラス
 /// </summary>
 
 public class PlayerController : MonoBehaviour
@@ -12,13 +12,28 @@ public class PlayerController : MonoBehaviour
     float horizontalKeyInput = 0;
     float verticalKeyInput = 0;
 
+    [SerializeField]
+    private float playerMoveSpeed = 5;
+    
+    [SerializeField]
+    private float playerRollSpeed = 120f;
+
     Vector2 StartTouch = new Vector2();
     Vector2 TouchInput = new Vector2();
+
+    private Vector3 moveVector;
+    
+    private Vector3 latestPos = new Vector3();
+    
+    private string groundTag = "Ground";
+    private bool isGround = false;
 
     bool isTouch = false;
 
     [SerializeField] Animator anim;
     [SerializeField] Rigidbody rigid;
+
+    [SerializeField] private Terrain terrain;
 
     void Update()
     {
@@ -61,29 +76,41 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-
             else
             {
                 isTouch = false;
             }
         }
+        
+        moveVector = Vector3.zero;
+ 
+        moveVector += transform.forward * Input.GetAxis( "Vertical" );
+        moveVector += transform.right * Input.GetAxis( "Horizontal" );
 
-        else
+        bool isKeyInput = ( Input.GetAxis( "Horizontal" ) != 0 || Input.GetAxis( "Vertical" ) != 0 || TouchInput != Vector2.zero );
+        if( isKeyInput )
         {
-            horizontalKeyInput = Input.GetAxis( "Horizontal" );
-            verticalKeyInput = Input.GetAxis( "Vertical" );
-        }
+            Vector3 moveDelta;
+            moveDelta = moveVector * Time.deltaTime * playerMoveSpeed;
 
-        bool isKeyInput = ( horizontalKeyInput != 0 || verticalKeyInput != 0 || TouchInput != Vector2.zero );
-        if( isKeyInput == true )
-        {
-            Vector3 dir = rigid.velocity.normalized;
-            dir.y = 0;
-            this.transform.forward = dir;
+            Vector3 taragetPosition = transform.position + moveDelta;
+            taragetPosition.y = terrain.SampleHeight(taragetPosition);
+
+            moveDelta = taragetPosition - transform.position;
+            moveDelta = moveDelta.normalized * Time.deltaTime * playerMoveSpeed;
+
+            transform.position += moveDelta;
+            latestPos = transform.position;
+            
+            Quaternion lookRotation = Quaternion.LookRotation(
+                new Vector3(moveVector.x, 0f, moveVector.z));
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation,
+                lookRotation, Time.deltaTime * playerRollSpeed);
         }
     }
 
-    void FixedUpdate()
+    /*void FixedUpdate()
     {
         Vector3 input = new Vector3();
         Vector3 move = new Vector3();
@@ -103,5 +130,5 @@ public class PlayerController : MonoBehaviour
         currentRigidVelocity.y = 0;
  
         rigid.AddForce( cameraMove - rigid.velocity, ForceMode.VelocityChange );
-    }
+    }*/
 }
