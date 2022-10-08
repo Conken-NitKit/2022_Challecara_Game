@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/MyAssets/Scenes/DevelopScene/Ichi.unity
+    guid: ebb5deb989b5e454f9754a29f464e36c
+  - enabled: 1
+    path: Assets/MyAssets/Scenes/GameScene/Result.unity
+    guid: f3884241e463b47b8a6302ff7efda186
   m_configObjects: {}
