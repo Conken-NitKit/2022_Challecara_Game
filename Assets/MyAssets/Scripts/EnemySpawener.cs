@@ -31,17 +31,16 @@ public class EnemySpawener : MonoBehaviour
 
     private IEnumerator SpawnEnemy()
     {
+        Random rand = new Random();
         while (true)
         {
-           
             Vector2 spawnVector2 = new Vector2();
-            if (new Random().Next(1) == 1) spawnVector2.x = spawnOffset + 1;
+            if (rand.NextDouble() > 0.5) spawnVector2.x = spawnOffset + 1;
             else spawnVector2.x = spawnOffset * -1;
-            if (new Random().Next(1) == 1) spawnVector2.y = spawnOffset + 1;
+            if (rand.NextDouble() > 0.5) spawnVector2.y = spawnOffset + 1;
             else spawnVector2.y = spawnOffset * -1;
-
-            ICinemachineCamera vCam = cmBrain.ActiveVirtualCamera;
-            Vector3 spawnPoint = Camera.main.ViewportToWorldPoint(new Vector3( spawnVector2.x , spawnVector2.y , Camera.main.nearClipPlane));
+            
+            Vector3 spawnPoint = Camera.main.ViewportToWorldPoint(new Vector3( spawnVector2.x , spawnVector2.y , 20));
         
             GameObject randomEnemy = spawnEnemies[UnityEngine.Random.Range(0, spawnEnemies.Length)];
             Instantiate (randomEnemy, spawnPoint, Quaternion.identity);
