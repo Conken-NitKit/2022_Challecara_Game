@@ -19,7 +19,7 @@ public class Comments : MonoBehaviour
     /// コメントを取得した時に実行する
     /// UseCommentTestの部分を実際の攻撃の実装に置き換えると良い
     /// </summary>
-    private void OnComment(List<Comment> comments)
+    public void OnComment(List<Comment> comments)
     {
         foreach(var c in comments)
         {
