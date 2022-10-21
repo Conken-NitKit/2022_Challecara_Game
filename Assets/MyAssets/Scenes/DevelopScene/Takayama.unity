@@ -231,11 +231,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbba3cdcd7c33904684a2806a9f3a770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cmBrain: {fileID: 0}
   <SpawnFrequency>k__BackingField: 1
   <spawnEnemies>k__BackingField:
   - {fileID: 487748077}
-  spawnOffset: 0
+  spawnRange: {x: 0, y: 0, z: 0}
 --- !u!1 &487748077
 GameObject:
   m_ObjectHideFlags: 0
