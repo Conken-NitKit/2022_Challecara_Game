@@ -15,7 +15,7 @@ public class EnemySpawener : MonoBehaviour
     public GameObject[] spawnEnemies { get; set; }
     
     [SerializeField] private Vector3 spawnRange;
-    private Vector3 camArea;
+    [SerializeField] private Transform mainCamTransform;
     private void Start()
     {
         StartCoroutine(nameof(SpawnEnemy));
@@ -34,7 +34,6 @@ public class EnemySpawener : MonoBehaviour
             Vector2 spawnVector2 = new Vector2();
             if (rand.NextDouble() > 0.5)
             {
-                Debug.Log("x");
                 double offset = spawnRange.x * rand.NextDouble();
                 if (rand.NextDouble() > 0.5)
                 {
@@ -48,8 +47,6 @@ public class EnemySpawener : MonoBehaviour
             }
             else
             {
-                Debug.Log("y");
-
                 double offset = spawnRange.x * rand.NextDouble();
                 if (rand.NextDouble() > 0.5)
                 {
@@ -58,14 +55,17 @@ public class EnemySpawener : MonoBehaviour
                 {
                     spawnVector2.y = (float) offset + 1;
                 }
-
                 spawnVector2.x = (float) rand.NextDouble() * (spawnRange.x * 2 + 1) - spawnRange.x;
             }
-            Debug.Log($"{spawnVector2.x} {spawnVector2.y}");
-            Vector3 spawnPoint = Camera.main.ViewportToWorldPoint(new Vector3( spawnVector2.x , spawnVector2.y ,(float)(50 * rand.NextDouble() - 25 )));
+
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3( spawnVector2.x , spawnVector2.y ,0));
+            if (Physics.Raycast(ray,out RaycastHit hit))
+            {
+                Vector3 spawnPoint = hit.point;
         
-            GameObject randomEnemy = spawnEnemies[UnityEngine.Random.Range(0, spawnEnemies.Length)];
-            Instantiate (randomEnemy, spawnPoint, Quaternion.identity);
+                GameObject randomEnemy = spawnEnemies[UnityEngine.Random.Range(0, spawnEnemies.Length)];
+                Instantiate (randomEnemy, spawnPoint, Quaternion.identity);
+            }
         
             yield return new WaitForSeconds(SpawnFrequency);
         }
