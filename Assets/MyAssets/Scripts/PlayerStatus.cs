@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 
 /// <summary>
 /// プレイヤーのステータス管理クラス
@@ -18,12 +19,20 @@ public class PlayerStatus : MonoBehaviour
 
     private bool runDoubleAtk;
 
+    private Subject<float> GameOverSubject = new Subject<float>();
+
+    public IObservable<float> OnPlayerHpDisappear
+    {
+        get { return GameOverSubject; }
+    } 
+
     private void Awake()
     {
         nowPlayerAtk = DefaultPlayerAtk;
 
         playerHp = DefaultPlayerHp;
     }
+
 
     /// <summary>
     /// プレイヤーのHPを増やすメソッド
@@ -33,6 +42,8 @@ public class PlayerStatus : MonoBehaviour
     private void IncreaseHp(float recoveryAmount)
     {
         playerHp += recoveryAmount;
+
+        GameOverSubject.OnNext(playerHp);
     }
 
     /// <summary>
@@ -43,6 +54,8 @@ public class PlayerStatus : MonoBehaviour
     private void DecreaseHp(float damageTaken)
     {
         playerHp -= damageTaken;
+
+        GameOverSubject.OnNext(playerHp);
     }
 
     /// <summary>
