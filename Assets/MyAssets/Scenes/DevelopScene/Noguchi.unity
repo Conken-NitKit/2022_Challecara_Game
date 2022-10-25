@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4445419535164265650, guid: 2cacb6e5442f0447ea9fc33f77231ea1, type: 3}
       propertyPath: m_Name
-      value: PolyArtWizardMaskTintMat (1)
+      value: PolyArtWizardMaskTintMat(Copy)
       objectReference: {fileID: 0}
     - target: {fileID: 4447817252126877822, guid: 2cacb6e5442f0447ea9fc33f77231ea1, type: 3}
       propertyPath: m_RootOrder
@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6559dc79a294e6aa67edd912b403f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObject: {fileID: 1978648282}
 --- !u!1 &661950031
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,3 +689,8 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.5, y: 1.6757816, z: 0}
   m_Center: {x: 3.75, y: -0.8378908, z: 0}
+--- !u!1 &1978648282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4445419535164265650, guid: 2cacb6e5442f0447ea9fc33f77231ea1, type: 3}
+  m_PrefabInstance: {fileID: 280084995}
+  m_PrefabAsset: {fileID: 0}
