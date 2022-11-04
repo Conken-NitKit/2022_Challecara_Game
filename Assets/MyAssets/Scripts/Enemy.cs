@@ -1,17 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
-    void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "Player")
-        {
-            Debug.Log("GameOver");
-            SceneManager.LoadScene("Result");
-        }
-
-    }
+    protected abstract float Hp { get; set; }
+    protected abstract float AttackPoint { get; set; }
+    protected abstract float Velocity { get; set; }
+    protected abstract float Score { get; set; }
 }
