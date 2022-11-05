@@ -8,8 +8,9 @@ using DG.Tweening;
 /// Titleの遷移を促すテキストのアニメーションをさせるクラス
 /// ImageとText、ほとんど同じアニメーションさせるから同一クラスに突っ込んだ
 /// ほとんどやることおんなじだから共通化できそうなところはしたかったけど思いつかなかったのでとりあえずこのままで。
+/// ジェネリック使ってみようとしたけどだめでした
 /// </summary>
-public class TitleTextAnimation : MonoBehaviour
+public class TitleTextAnimation : MonoBehaviour 
 {
 
     [SerializeField]
