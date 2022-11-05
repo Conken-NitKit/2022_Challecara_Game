@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+/// <summary>
+/// Titleの遷移を促すテキストのアニメーションをさせるクラス
+/// ImageとText、ほとんど同じアニメーションさせるから同一クラスに突っ込んだ
+/// ほとんどやることおんなじだから共通化できそうなところはしたかったけど思いつかなかったのでとりあえずこのままで。
+/// </summary>
 public class TitleTextAnimation : MonoBehaviour
 {
 
@@ -17,7 +22,7 @@ public class TitleTextAnimation : MonoBehaviour
     private float animationScaleY = 1.01f;
 
     private float transmittance = 0f;
-    
+
     private void Start()
     {
         if (this.gameObject.GetComponent<Text>() != null)
