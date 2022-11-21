@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// 取得したコメントをplayerObjectの座標位置から出力するクラス
+/// コメントを文字数によって変形させるクラス
 /// <summary>
 public class ChangeCommentForm : MonoBehaviour
 {
-    [SerializeField] GameObject playerObject;
+    /**[SerializeField] GameObject playerObject;
     [SerializeField] Text commentText;
 
     void Start()
@@ -20,6 +20,12 @@ public class ChangeCommentForm : MonoBehaviour
     {   
         Transform playerTransform = playerObject.transform;
         Vector3 playerPos = playerTransform.position;
-        Debug.Log(playerPos.x);
-    }
+        Vector3 playerRot = playerTransform.eulerAngles;
+        //Debug.Log(playerPos.x + "," + playerPos.z);
+        Debug.Log(playerRot.y);
+
+    }*/
+
+    
+    
 }
