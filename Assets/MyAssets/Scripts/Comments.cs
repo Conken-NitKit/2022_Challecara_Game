@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+///①テキスト３dオブジェクト化
+///②球の動き
+
+///③コメントを取得して球を動かせるように
+
 /// <summary>
 /// コメントを取得して扱うクラス
 /// </summary>
 public class Comments : MonoBehaviour
 {
-    
+
     List<string> commentList = new List<string>();
     
     private void Start()
@@ -28,7 +33,8 @@ public class Comments : MonoBehaviour
 
         foreach (var comment in commentList)
         {
-            StartCoroutine(UseCommentTest(comment));
+            //StartCoroutine(UseCommentTest(comment));
+            //StartCoroutine(GetCommentLength(comment));
         }
     }
 
@@ -36,10 +42,10 @@ public class Comments : MonoBehaviour
     /// コメントを扱うテスト
     /// Debug.Logの部分を実際の処理に変更するといいと思います
     /// </summary>
-    private IEnumerator UseCommentTest(string comment)
+    /*private IEnumerator UseCommentTest(string comment)
     {
-        Debug.Log(comment);
-        yield return new WaitForSeconds(0.1f);
-        commentList.Remove(comment);
-    }
+        //Debug.Log(comment);
+        //yield return new WaitForSeconds(0.1f);
+        //commentList.Remove(comment);
+    }*/
 }
