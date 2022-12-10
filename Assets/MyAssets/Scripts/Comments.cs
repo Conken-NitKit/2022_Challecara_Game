@@ -33,7 +33,7 @@ public class Comments : MonoBehaviour
 
         foreach (var comment in commentList)
         {
-            //StartCoroutine(UseCommentTest(comment));
+            StartCoroutine(UseCommentTest(comment));
             //StartCoroutine(GetCommentLength(comment));
         }
     }
@@ -42,10 +42,11 @@ public class Comments : MonoBehaviour
     /// コメントを扱うテスト
     /// Debug.Logの部分を実際の処理に変更するといいと思います
     /// </summary>
-    /*private IEnumerator UseCommentTest(string comment)
+    private IEnumerator UseCommentTest(string comment)
     {
-        //Debug.Log(comment);
-        //yield return new WaitForSeconds(0.1f);
-        //commentList.Remove(comment);
-    }*/
+        Debug.Log(comment);
+        GetComponent<TextMesh>().text = comment;
+        yield return new WaitForSeconds(0.1f);
+        commentList.Remove(comment);
+    }
 }

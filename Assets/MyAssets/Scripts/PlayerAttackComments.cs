@@ -8,6 +8,7 @@ using UnityEngine;
 /// <summary>
 public class PlayerAttackComments : MonoBehaviour
 {
+    /*
     List<string> getCommentList = new List<string>();
 
     private void Start(){
@@ -22,5 +23,6 @@ public class PlayerAttackComments : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         getCommentList.Remove(comment);
     }
+    */
 
 }
