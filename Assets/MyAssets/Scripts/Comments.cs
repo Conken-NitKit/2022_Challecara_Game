@@ -2,11 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-///①テキスト３dオブジェクト化
-///②球の動き
-
-///③コメントを取得して球を動かせるように
-
 /// <summary>
 /// コメントを取得して扱うクラス
 /// </summary>
