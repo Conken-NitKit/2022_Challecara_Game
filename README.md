@@ -66,7 +66,7 @@ DownLoadAssetsの中には開発には使用するけど、入れてるだけで
 >[僕が考える最強のコミットメッセージの書き方](https://qiita.com/konatsu_p/items/dfe199ebe3a7d2010b3e)
 - どういった処理をするのか説明する summuryコメントアウト を付ける（関数、クラスの上つけるようにしましょう）
 >参考  
->[<Summary>コメントの有用性](https://qiita.com/Disk_MJM/items/c24f51b894fdcf2170d6)
+>[＜Summary＞コメントの有用性](https://qiita.com/Disk_MJM/items/c24f51b894fdcf2170d6)
 
 ### git操作
 
