@@ -9,19 +9,20 @@ public class Comments : MonoBehaviour
 {
 
     List<string> commentList = new List<string>();
-    public GenerateComments generateComments;
-    
+    [SerializeField] GenerateComments generateComments;
+
     private void Start()
     {
         FindObjectOfType<YoutubeComment>().BeginGetComments();
     }
-
+   
     /// <summary>
     /// コメントを取得した時に実行する
     /// UseCommentTestの部分を実際の攻撃の実装に置き換えると良い
     /// </summary>
     public void OnComment(List<Comment> comments)
     {
+
         foreach(var c in comments)
         {
             commentList.Add(c.Message);
@@ -29,21 +30,9 @@ public class Comments : MonoBehaviour
 
         foreach (var comment in commentList)
         {
-            //StartCoroutine(UseCommentTest(comment));
             StartCoroutine(generateComments.GetComments(comment));
         }
     }
 
-    /// <summary>
-    /// コメントを扱うテスト
-    /// Debug.Logの部分を実際の処理に変更するといいと思います
-    /// </summary>
-    /*private IEnumerator UseCommentTest(string comment)
-    {
-        Debug.Log(comment);
-        GetComponent<TextMesh>().text = comment; //追加
-        yield return new WaitForSeconds(0.1f);
-        commentList.Remove(comment);
-        
-    }*/
+    
 }

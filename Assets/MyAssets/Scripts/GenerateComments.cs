@@ -22,10 +22,11 @@ public class GenerateComments : MonoBehaviour
 {
 
     List<string> commentList = new List<string>();
+    public GameObject commentTextPrefab;
 
     public IEnumerator GetComments(string comment){
         Debug.Log(comment);
-        GetComponent<TextMesh>().text = comment; //追加
+        commentTextPrefab.GetComponent<TextMesh>().text = comment; //追加
         yield return new WaitForSeconds(0.1f);
         commentList.Remove(comment);
     }
