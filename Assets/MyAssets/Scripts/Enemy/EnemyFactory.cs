@@ -6,13 +6,14 @@ using static System.Exception;
 
 public abstract class EnemyFactory
 {
-    public Enemy Create()
+    public GameObject Create(GameObject obj)
     {
-            Enemy enemy = CreateEnemy();
-            RegisterEnemy(enemy);
+            GameObject enemy = CreateEnemy(obj);
+            RegisterEnemy(enemy.GetComponent<Enemy>());
             return enemy;
     }
-    protected abstract Enemy CreateEnemy();
-    protected abstract void RegisterEnemy(Enemy enemy);
     public abstract ArrayList GetEnemys();
+    
+    protected abstract GameObject CreateEnemy(GameObject obj);
+    protected abstract void RegisterEnemy(Enemy enemy);
 }
