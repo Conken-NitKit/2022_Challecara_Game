@@ -31,9 +31,29 @@ public class EnemySpawner : MonoBehaviour
             GameObject enemy = enemyFactory.Create(obj);
             obj.SetActive(false);
             enemys.Add(enemy);
-
         }
     }
+
+    /// <summary>
+    /// Enemyの生成上限を増やすメソッド
+    /// </summary>
+    /// <param name="IncreaseNum">増やしたいEnemyの生成上限数</param>
+
+    public void IncreaseMaxCount(int IncreaseNum)
+    {
+        if (IncreaseNum <= 0){return;}
+        MaxEnemyCount += IncreaseNum;
+        for (int i = 0; i < IncreaseNum; i++)
+        {
+            GameObject obj = Instantiate(prefab);
+            obj.transform.SetParent(gameObject.transform);
+            
+            GameObject enemy = enemyFactory.Create(obj);
+            obj.SetActive(false);
+            enemys.Add(enemy);
+        }
+    }
+    
     /// <summary>
     /// Enemyの生成コルーチンを開始するメソッド
     /// </summary>
