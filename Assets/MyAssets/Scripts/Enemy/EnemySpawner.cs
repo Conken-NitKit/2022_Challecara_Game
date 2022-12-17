@@ -12,24 +12,23 @@ public class EnemySpawner : MonoBehaviour
     public GameObject prefab;
     private List<GameObject> enemys;
     private Random rand = new Random();
-
-    public EnemySpawner(int maxEnemyCount,EnemyFactory enemyFactory,GameObject prefab)
+    
+    /// <summary>
+    /// 初期化処理
+    /// </summary>
+    /// <param name="maxEnemyCount">敵の生成上限数</param>
+    public void Init(int maxEnemyCount,GameObject prefab)
     {
-        this.MaxEnemyCount = maxEnemyCount;
-        this.enemyFactory = enemyFactory;
+        MaxEnemyCount = maxEnemyCount;
         this.prefab = prefab;
-    }
-
-    public void Init()
-    {
         enemys = new List<GameObject>();
         for (int i = 0; i < MaxEnemyCount; i++)
         {
             GameObject obj = Instantiate(prefab);
             obj.transform.SetParent(gameObject.transform);
+            
             GameObject enemy = enemyFactory.Create(obj);
             obj.SetActive(false);
-            if(enemys == null) Debug.Log($"は？");
             enemys.Add(enemy);
 
         }
@@ -64,7 +63,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
     
-    public void Instantiate(Vector3 spawnPos)
+    private void Instantiate(Vector3 spawnPos)
     {
         GameObject findObj = enemys.Find(obj => !obj.activeInHierarchy);
         if (findObj == null)
@@ -73,7 +72,7 @@ public class EnemySpawner : MonoBehaviour
         }
         
         findObj.GetComponent<Transform>().position = spawnPos;
-        findObj.SetActive(true);
+        findObj.GetComponent<Enemy>().Init();
     }
     
     private Vector3 CalcSpawnPos()

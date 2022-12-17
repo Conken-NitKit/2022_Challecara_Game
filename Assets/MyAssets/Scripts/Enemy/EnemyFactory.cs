@@ -8,12 +8,12 @@ public abstract class EnemyFactory
 {
     public GameObject Create(GameObject obj)
     {
-            GameObject enemy = CreateEnemy(obj);
+            GameObject enemy = AddEnemyComponent(obj);
             RegisterEnemy(enemy.GetComponent<Enemy>());
             return enemy;
     }
     public abstract ArrayList GetEnemys();
     
-    protected abstract GameObject CreateEnemy(GameObject obj);
+    protected abstract GameObject AddEnemyComponent(GameObject obj);
     protected abstract void RegisterEnemy(Enemy enemy);
 }

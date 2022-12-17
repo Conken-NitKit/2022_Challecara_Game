@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestFactory : EnemyFactory {
     private ArrayList enemys = new ArrayList();
-    protected override GameObject CreateEnemy(GameObject obj) {
+    protected override GameObject AddEnemyComponent(GameObject obj) {
         var addComponent = obj.AddComponent(typeof(TestEnemy))as TestEnemy;
         return obj;
     }

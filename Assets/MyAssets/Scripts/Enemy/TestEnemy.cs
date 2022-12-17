@@ -1,26 +1,57 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TestEnemy : Enemy
-{ 
-    public override float Hp { get; set; }
-    public override float AttackPoint { get; set; }
-    public override float Velocity { get; set; }
-    public override float Score { get; set; }
+{
+    private static EnemyParams param = null;
+    public static EnemyParams Params => param ?? (param = Resources.Load<EnemyParams>("EnemyDatas/test"));
+    protected float Hp;
+
+    public override void Init()
+    {
+        Hp = Params.maxHp;
+        gameObject.SetActive(true);
+        Debug.Log("復活！ At.Init");
+    }
 
     public override void Attack()
     {
-        Debug.Log($"テスト！ Attack");
+        Debug.Log($"テスト！ At.Attack");
     }
     
-    public override void AddDamage()
+    public override void AddedDamage(float damage)
     {
-        Debug.Log($"テスト！ AddDamage");
+        Hp -= damage;
+        Debug.Log($"{damage}痛いよ！ At.AddedDamage");
     }
     
     public override void Dead()
     {
-        Debug.Log($"テスト！ Dead");
+        Debug.Log($"ぐえっ At.Dead");
+        gameObject.SetActive(false);
     }
+    
+    
+    private void OnEnable()
+    {
+        StartCoroutine(nameof(TestLoop));
+    }
+
+    private IEnumerator TestLoop()
+    {
+        while (true)
+        {
+            
+            AddedDamage(3f);
+            yield return new WaitForSeconds(1f);
+            if (Hp <= 0)
+            {
+                Dead();
+                yield break;
+            }
+        }
+    } 
+
 }
