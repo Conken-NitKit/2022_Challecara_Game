@@ -16,7 +16,8 @@ public class EnemySpawner : MonoBehaviour
     /// <summary>
     /// 初期化処理
     /// </summary>
-    /// <param name="maxEnemyCount">敵の生成上限数</param>
+    /// <param name="maxEnemyCount">Enemyの生成上限数</param>
+    /// <param name="pref">生成するEnemyのObject</param>
     public void Init(int maxEnemyCount,GameObject prefab)
     {
         MaxEnemyCount = maxEnemyCount;
@@ -34,9 +35,9 @@ public class EnemySpawner : MonoBehaviour
         }
     }
     /// <summary>
-    /// 敵の生成コルーチンを開始するメソッド
+    /// Enemyの生成コルーチンを開始するメソッド
     /// </summary>
-    /// <param name="spawnFrequency">敵の出現頻度</param>
+    /// <param name="spawnFrequency">Enemyの出現頻度</param>
     public void StartSpawn(float spawnFrequency)
     {
         rand = new Random();
@@ -44,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(nameof(SpawnEnemy));
     }
     /// <summary>
-    /// 敵の生成コルーチンを停止するメソッド
+    /// Enemyの生成コルーチンを停止するメソッド
     /// </summary>
     public void StopSpawn()
     {

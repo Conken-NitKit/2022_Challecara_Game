@@ -6,8 +6,7 @@ using UnityEngine;
 public class TestEnemy : Enemy
 {
     private static EnemyParams param = null;
-    public static EnemyParams Params => param ?? (param = Resources.Load<EnemyParams>("EnemyDatas/test"));
-    protected float Hp;
+    private static EnemyParams Params => param ?? (param = Resources.Load<EnemyParams>("EnemyDatas/test"));
 
     public override void Init()
     {

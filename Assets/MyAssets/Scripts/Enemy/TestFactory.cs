@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// TestEnemyのFactory
+/// </summary>
 public class TestFactory : EnemyFactory {
     private ArrayList enemys = new ArrayList();
     protected override GameObject AddEnemyComponent(GameObject obj) {
