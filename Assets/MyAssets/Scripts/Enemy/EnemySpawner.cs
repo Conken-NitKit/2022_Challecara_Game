@@ -5,7 +5,6 @@ using Random = System.Random;
 
 /// <summary>
 /// 敵のスポナークラス
-/// 
 /// </summary>
 public class EnemySpawner : MonoBehaviour
 {
@@ -43,13 +42,13 @@ public class EnemySpawner : MonoBehaviour
     /// <summary>
     /// Enemyの生成上限を増やすメソッド
     /// </summary>
-    /// <param name="IncreaseNum">増やしたいEnemyの生成上限数</param>
+    /// <param name="increaseNum">増やしたいEnemyの生成上限数</param>
 
-    public void IncreaseMaxCount(int IncreaseNum)
+    public void IncreaseMaxCount(int increaseNum)
     {
-        if (IncreaseNum <= 0){return;}
-        MaxEnemyCount += IncreaseNum;
-        for (int i = 0; i < IncreaseNum; i++)
+        if (increaseNum <= 0){return;}
+        MaxEnemyCount += increaseNum;
+        for (int i = 0; i < increaseNum; i++)
         {
             GameObject obj = Instantiate(prefab);
             obj.transform.SetParent(gameObject.transform);

@@ -8,7 +8,7 @@ public class TestScript : MonoBehaviour
     [SerializeField] private EnemySpawner _testSpawner;
     [SerializeField] private GameObject _testPref;
     private float time = 10;
-    private int IncreaseNum = 5;
+    private int increaseNum = 5;
     void Start()
     {
         _testSpawner.Init(10, _testPref,new TestFactory());
@@ -20,8 +20,8 @@ public class TestScript : MonoBehaviour
         time -= Time.deltaTime;
         if (　time < 0f )
         {
-            Debug.Log($"敵を{IncreaseNum}増やすよ！");
-            _testSpawner.IncreaseMaxCount(IncreaseNum);
+            Debug.Log($"敵を{increaseNum}増やすよ！");
+            _testSpawner.IncreaseMaxCount(increaseNum);
             time = 10;
         }
     }
