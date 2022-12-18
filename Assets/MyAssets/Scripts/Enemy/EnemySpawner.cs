@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public Vector3 SpawnRange{ get; set; } 
     public int MaxEnemyCount{ get; set; }
     public EnemyFactory enemyFactory{ get; set; }
-    public GameObject prefab;
+    private GameObject prefab;
     private List<GameObject> enemys;
     private Random rand = new Random();
     
