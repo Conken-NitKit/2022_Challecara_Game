@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 /// <summary>
 /// コメントを取得して扱うクラス
@@ -14,6 +15,7 @@ public class Comments : MonoBehaviour
     private void Start()
     {
         FindObjectOfType<YoutubeComment>().BeginGetComments();
+        
     }
    
     /// <summary>
@@ -22,6 +24,9 @@ public class Comments : MonoBehaviour
     /// </summary>
     public void OnComment(List<Comment> comments)
     {
+        if(comments.Count >= 5){
+            comments.RemoveRange(0, comments.Count -5);
+        }
 
         foreach(var c in comments)
         {

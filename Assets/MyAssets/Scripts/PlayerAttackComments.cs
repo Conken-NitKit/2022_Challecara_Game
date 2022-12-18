@@ -8,21 +8,17 @@ using UnityEngine;
 /// <summary>
 public class PlayerAttackComments : MonoBehaviour
 {
-    /*
-    List<string> getCommentList = new List<string>();
+    private Vector3 commentStartPos;
+    public float commentSpeed;
+    [SerializeField] GameObject playerObject;
 
-    private void Start(){
-       FindObjectOfType<Comments>().OnComment(List<Comments> comments);
-    }
+    void FixedUpdate(){
+        Transform playerTransform = playerObject.transform;
+        Vector3 playerPos = playerTransform.position;
+        Vector3 playerRot = playerTransform.eulerAngles;
 
-    /// <summary>
-    /// コメントの長さを取得
-    /// <summary>
-    private IEnumerator GetCommentLength(string comment){
-        Debug.Log(comment);
-        yield return new WaitForSeconds(0.1f);
-        getCommentList.Remove(comment);
+        commentStartPos = new Vector3(playerPos.x, playerPos.y, playerPos.z);
+        //transform.position += new Vector3(0.5f*Time.deltaTime, 0f, 0f);
     }
-    */
 
 }
