@@ -25,6 +25,7 @@ public class GenerateComments : MonoBehaviour
     public GameObject commentTextPrefab;
     //public GameObject textPrefab;
 
+
     void FixedUndate(){
         /*if(Input.GetKey(KeyCode.Space)){
             //GameObject.Destroy(commentTextPrefab);
