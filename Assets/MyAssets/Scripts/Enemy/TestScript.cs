@@ -11,8 +11,7 @@ public class TestScript : MonoBehaviour
     private int IncreaseNum = 5;
     void Start()
     {
-        _testSpawner.enemyFactory = new TestFactory();
-        _testSpawner.Init(10, _testPref);
+        _testSpawner.Init(10, _testPref,new TestFactory());
         _testSpawner.StartSpawn(1f);
     }
 

@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
+/// <summary>
+/// 敵のスポナークラス
+/// 
+/// </summary>
 public class EnemySpawner : MonoBehaviour
 {
     public float SpawnFrequency { get; private set; }
     public Vector3 SpawnRange{ get; set; } 
     public int MaxEnemyCount{ get; set; }
-    public EnemyFactory enemyFactory{ get; set; }
+    private EnemyFactory enemyFactory;
     private GameObject prefab;
     private List<GameObject> enemys;
     private Random rand = new Random();
@@ -18,9 +22,11 @@ public class EnemySpawner : MonoBehaviour
     /// </summary>
     /// <param name="maxEnemyCount">Enemyの生成上限数</param>
     /// <param name="pref">生成するEnemyのObject</param>
-    public void Init(int maxEnemyCount,GameObject prefab)
+    /// <param name="enemyFactory">生成するEnemyのFactoryクラス</param>
+    public void Init(int maxEnemyCount,GameObject prefab,EnemyFactory enemyFactory)
     {
         MaxEnemyCount = maxEnemyCount;
+        this.enemyFactory = enemyFactory;
         this.prefab = prefab;
         enemys = new List<GameObject>();
         for (int i = 0; i < MaxEnemyCount; i++)
@@ -53,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
             enemys.Add(enemy);
         }
     }
-    
+
     /// <summary>
     /// Enemyの生成コルーチンを開始するメソッド
     /// </summary>
