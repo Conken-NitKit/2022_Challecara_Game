@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 /// <summary>
 /// コメントを取得して扱うクラス
@@ -15,7 +16,6 @@ public class Comments : MonoBehaviour
     private void Start()
     {
         FindObjectOfType<YoutubeComment>().BeginGetComments();
-        
     }
    
     /// <summary>
@@ -24,8 +24,9 @@ public class Comments : MonoBehaviour
     /// </summary>
     public void OnComment(List<Comment> comments)
     {
-        if(comments.Count >= 5){
-            comments.RemoveRange(0, comments.Count -5);
+        if(comments.Count > 1){
+            //CommentList内のコメントを最新のもの以外は削除する
+            comments.RemoveRange(0, comments.Count -1);
         }
 
         foreach(var c in comments)
@@ -33,11 +34,12 @@ public class Comments : MonoBehaviour
             commentList.Add(c.Message);
         }
 
+        /*
         foreach (var comment in commentList)
         {
             StartCoroutine(generateComments.GetComments(comment));
         }
+        */
+        StartCoroutine(generateComments.GetComments(commentList.Last()));
     }
-
-    
 }

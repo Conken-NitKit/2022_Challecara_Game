@@ -755,6 +755,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CommentTextPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 5504908394044153005, guid: 0dc7ae716b4774783aaef3beffdf8606, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5504908394044153042, guid: 0dc7ae716b4774783aaef3beffdf8606, type: 3}
       propertyPath: m_RootOrder
       value: 0
