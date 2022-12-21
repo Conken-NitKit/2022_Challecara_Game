@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d9dbd089be434581a5499bb250f0d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commentTextPrefab: {fileID: 1337659583}
+  commentTextPrefab: {fileID: 1701971772}
 --- !u!114 &364933315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,11 +463,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4447817252126877822, guid: 2cacb6e5442f0447ea9fc33f77231ea1, type: 3}
   m_PrefabInstance: {fileID: 280084995}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1337659583 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5504908394044153005, guid: 0dc7ae716b4774783aaef3beffdf8606, type: 3}
-  m_PrefabInstance: {fileID: 5504908395245358098}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1337659584 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5504908394044153042, guid: 0dc7ae716b4774783aaef3beffdf8606, type: 3}
@@ -615,6 +610,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1701971772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5504908394044153005, guid: 0dc7ae716b4774783aaef3beffdf8606, type: 3}
+  m_PrefabInstance: {fileID: 5504908395245358098}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1749391350
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,7 +756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d9dbd089be434581a5499bb250f0d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commentTextPrefab: {fileID: 1337659583}
+  commentTextPrefab: {fileID: 0}
 --- !u!1001 &5504908395245358098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -764,6 +764,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1749391351}
     m_Modifications:
+    - target: {fileID: 771050326042512868, guid: 0dc7ae716b4774783aaef3beffdf8606, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 771050326042512868, guid: 0dc7ae716b4774783aaef3beffdf8606, type: 3}
+      propertyPath: commentSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 771050326042512868, guid: 0dc7ae716b4774783aaef3beffdf8606, type: 3}
+      propertyPath: playerObject
+      value: 
+      objectReference: {fileID: 1887900078}
     - target: {fileID: 5504908394044153005, guid: 0dc7ae716b4774783aaef3beffdf8606, type: 3}
       propertyPath: m_Name
       value: CommentTextPrefab

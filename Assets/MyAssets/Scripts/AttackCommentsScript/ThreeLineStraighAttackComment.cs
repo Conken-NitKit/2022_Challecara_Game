@@ -7,5 +7,12 @@ using UnityEngine;
 /// </summary>
 public class ThreeLineStraighAttackComment : CommentsNature
 {
-    
+    public GameObject commentTextPrefab;
+    public GameObject playerObject;
+    public Comments commets;
+
+
+    void FixedUpdate(){
+        
+    }
 }
