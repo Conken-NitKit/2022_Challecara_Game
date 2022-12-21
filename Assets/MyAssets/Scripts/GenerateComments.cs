@@ -4,15 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+
 /// <summary>
 /// コメントの性質を表す基底クラス
 /// <summary>
-class CommentsNature : MonoBehaviour{
-    private float commentSpeed;
-    private int attackPower;
-    private int commentLength;
-}
+public class CommentsNature : MonoBehaviour{
+    /*
+    public float commentSpeed = 10.0f;
+    public float attackPower;
+    public int commentLength;
+    public Vector3 commentStartPos;
 
+    public virtual void Hoge(){
+        //Debug.Log(commentTextPrefab.transform.position);
+    }
+    */
+
+}
 
 
 /// <summry>
@@ -20,14 +28,12 @@ class CommentsNature : MonoBehaviour{
 /// <summry>
 public class GenerateComments : MonoBehaviour
 {
-
     List<string> commentList = new List<string>();
     public GameObject commentTextPrefab;
 
 
     public IEnumerator GetComments(string comment){
-
-        Debug.Log(comment);
+        Debug.Log(comment.Length);
         commentTextPrefab.GetComponent<TextMesh>().text = comment; //追加
         GameObject newTextObj = Instantiate(commentTextPrefab, new Vector3( 1.47f, 1.0f, 0.97f), Quaternion.Euler(90, 0, 0)); //インスタンス化
 
