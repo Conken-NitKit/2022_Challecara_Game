@@ -35,10 +35,10 @@ public class EnemyState
 
     public EnemyState(GameObject _enemy, NavMeshAgent _agent, Transform _player)
     {
-        this.enemy = _enemy;
-        this.agent = _agent;
-        this.stage = EVENT.EXIT;
-        this.player = _player;
+        enemy = _enemy;
+        agent = _agent;
+        stage = EVENT.ENTER;
+        player = _player;
     }
 
     public virtual void Enter()
@@ -58,15 +58,14 @@ public class EnemyState
 
     public EnemyState Process()
     {
-        if(stage == EVENT.ENTER)Enter();
-        if (stage == EVENT.UPDATE)Update();
+        if (stage == EVENT.ENTER) Enter();
+        if (stage == EVENT.UPDATE) Update();
         if (stage == EVENT.EXIT)
         {
             Exit();
-            return nextState;
+            return nextState; // 次のStateを返却
         }
-
-        return this;
+        return this; // 現在のStateを返却
     }
     
     public bool CanSeePlayer()
@@ -99,6 +98,8 @@ public class Idle : EnemyState
     public Idle(GameObject _enemy, NavMeshAgent _agent, Transform _player) : base(_enemy, _agent, _player)
     {
         name = STATE.IDLE;
+        agent.isStopped = true;
+        Debug.Log("Idle");
     }
 
     public override void Enter()
@@ -108,12 +109,7 @@ public class Idle : EnemyState
 
     public override void Update()
     {
-        if (CanSeePlayer())
-        {
-            nextState = new Pursue(enemy, agent, player);
-            stage = EVENT.EXIT;
-        }
-        
+        stage = EVENT.EXIT;
     }
 
     public override void Exit()
@@ -128,7 +124,10 @@ public class Pursue : EnemyState
     public Pursue(GameObject _enemy, NavMeshAgent _agent, Transform _player) : base(_enemy, _agent, _player)
     {
         name = STATE.PURSUE;
+        agent.isStopped = false;
         agent.speed = 5;
+        agent.SetDestination(player.transform.position);
+        Debug.Log("Pursue");
     }
     
     public override void Enter()
@@ -138,11 +137,13 @@ public class Pursue : EnemyState
 
     public override void Update()
     {
-        if (CanSeePlayer())
+        if (GetAttackPlayer())
         {
             nextState = new Attack(enemy, agent, player);
             stage = EVENT.EXIT;
         }
+        
+        agent.SetDestination(player.transform.position);
     }
 
     public override void Exit()
@@ -157,6 +158,8 @@ public class Attack : EnemyState
     public Attack(GameObject _enemy, NavMeshAgent _agent, Transform _player) : base(_enemy, _agent, _player)
     {
         name = STATE.ATTACK;
+        agent.isStopped = true;
+        Debug.Log("Attack");
     }
 
     public override void Enter()
@@ -174,6 +177,12 @@ public class Attack : EnemyState
         enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation,
                                                     Quaternion.LookRotation(direction),
                                                     Time.deltaTime * rotationSpeed);
+
+        if (!GetAttackPlayer())
+        {
+            nextState = new Pursue(enemy, agent, player);
+            stage = EVENT.EXIT;
+        }
     }
 
     public override void Exit()
@@ -186,6 +195,7 @@ public class Die : EnemyState
     public Die(GameObject _enemy, NavMeshAgent _agent, Transform _player) : base(_enemy, _agent, _player)
     {
         name = STATE.DIE;
+        Debug.Log("Die");
     }
 
     public override void Enter()
