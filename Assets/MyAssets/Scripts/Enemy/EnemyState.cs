@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Threading.Tasks;
+using UnityEditor;
 
 public class EnemyState
 {
@@ -27,18 +28,23 @@ public class EnemyState
     protected Transform player;
     protected EnemyState nextState;
     protected NavMeshAgent agent;
+    protected Animator animator;
 
     readonly float visDist = 10.0f;
     readonly float visAngle = 30.0f;
 
-    readonly float shootDist = 7.0f;
+    readonly float shootDist = 5.0f;
 
-    public EnemyState(GameObject _enemy, NavMeshAgent _agent, Transform _player)
+    public static readonly int IS_MOVE_HASH = Animator.StringToHash("IsMove");
+    public static readonly int IS_ATTACK_HASH = Animator.StringToHash("IsAttack");
+
+    public EnemyState(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator)
     {
-        this.enemy = _enemy;
-        this.agent = _agent;
-        this.stage = EVENT.EXIT;
-        this.player = _player;
+        enemy = _enemy;
+        agent = _agent;
+        stage = EVENT.ENTER;
+        player = _player;
+        animator = _animator;
     }
 
     public virtual void Enter()
@@ -58,15 +64,14 @@ public class EnemyState
 
     public EnemyState Process()
     {
-        if(stage == EVENT.ENTER)Enter();
-        if (stage == EVENT.UPDATE)Update();
+        if (stage == EVENT.ENTER) Enter();
+        if (stage == EVENT.UPDATE) Update();
         if (stage == EVENT.EXIT)
         {
             Exit();
-            return nextState;
+            return nextState; // 次のStateを返却
         }
-
-        return this;
+        return this; // 現在のStateを返却
     }
     
     public bool CanSeePlayer()
@@ -96,9 +101,10 @@ public class EnemyState
 
 public class Idle : EnemyState
 {
-    public Idle(GameObject _enemy, NavMeshAgent _agent, Transform _player) : base(_enemy, _agent, _player)
+    public Idle(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator) : base(_enemy, _agent, _player, _animator)
     {
         name = STATE.IDLE;
+        agent.isStopped = true;
     }
 
     public override void Enter()
@@ -108,12 +114,7 @@ public class Idle : EnemyState
 
     public override void Update()
     {
-        if (CanSeePlayer())
-        {
-            nextState = new Pursue(enemy, agent, player);
-            stage = EVENT.EXIT;
-        }
-        
+        stage = EVENT.EXIT;
     }
 
     public override void Exit()
@@ -125,10 +126,13 @@ public class Idle : EnemyState
 public class Pursue : EnemyState
 {
     
-    public Pursue(GameObject _enemy, NavMeshAgent _agent, Transform _player) : base(_enemy, _agent, _player)
+    public Pursue(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator) : base(_enemy, _agent, _player, _animator)
     {
         name = STATE.PURSUE;
+        agent.isStopped = false;
         agent.speed = 5;
+        agent.SetDestination(player.transform.position);
+        animator.SetBool(IS_MOVE_HASH, true);
     }
     
     public override void Enter()
@@ -138,15 +142,17 @@ public class Pursue : EnemyState
 
     public override void Update()
     {
-        if (CanSeePlayer())
+        if (GetAttackPlayer())
         {
-            nextState = new Attack(enemy, agent, player);
+            nextState = new Attack(enemy, agent, player, animator);
             stage = EVENT.EXIT;
         }
+        agent.SetDestination(player.transform.position);
     }
 
     public override void Exit()
     {
+        animator.SetBool(IS_MOVE_HASH, false);
         base.Exit();
     }
 }
@@ -154,9 +160,11 @@ public class Pursue : EnemyState
 public class Attack : EnemyState
 {
     float rotationSpeed = 2.0f;
-    public Attack(GameObject _enemy, NavMeshAgent _agent, Transform _player) : base(_enemy, _agent, _player)
+    public Attack(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator) : base(_enemy, _agent, _player, _animator)
     {
         name = STATE.ATTACK;
+        agent.isStopped = true;
+        animator.SetBool(IS_ATTACK_HASH, true);
     }
 
     public override void Enter()
@@ -174,16 +182,23 @@ public class Attack : EnemyState
         enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation,
                                                     Quaternion.LookRotation(direction),
                                                     Time.deltaTime * rotationSpeed);
+
+        if (!GetAttackPlayer())
+        {
+            nextState = new Pursue(enemy, agent, player, animator);
+            stage = EVENT.EXIT;
+        }
     }
 
     public override void Exit()
     {
+        animator.SetBool(IS_ATTACK_HASH, false);
         base.Exit();
     }
 }
 public class Die : EnemyState
 {
-    public Die(GameObject _enemy, NavMeshAgent _agent, Transform _player) : base(_enemy, _agent, _player)
+    public Die(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator) : base(_enemy, _agent, _player, _animator)
     {
         name = STATE.DIE;
     }
