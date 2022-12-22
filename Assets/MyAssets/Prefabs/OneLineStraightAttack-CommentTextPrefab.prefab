@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 411133158997652626}
   - component: {fileID: 771050326042512868}
   m_Layer: 0
-  m_Name: CommentTextPrefab
+  m_Name: OneLineStraightAttack-CommentTextPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,4 +156,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commentSpeed: 100
   commentTextPrefab: {fileID: 5504908394044153005}
-  playerObject: {fileID: 0}
+  playerObject: {fileID: 1953271650171834, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
