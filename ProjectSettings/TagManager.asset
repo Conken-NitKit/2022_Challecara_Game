@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Canvas
   - commentTextPrefabTag
+  - Enemy
   layers:
   - Default
   - TransparentFX
