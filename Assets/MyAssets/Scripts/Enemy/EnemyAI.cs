@@ -16,11 +16,8 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
-        agent = this.gameObject.GetComponent<NavMeshAgent>();
-        animator = this.gameObject.GetComponent<Animator>();
         player = GameObject.FindWithTag("Player").transform;
         currentState = new Pursue(this.gameObject, agent, player, animator);
-        Debug.Log(currentState);
     }
 
     void Update()

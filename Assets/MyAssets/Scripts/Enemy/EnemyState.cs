@@ -33,9 +33,10 @@ public class EnemyState
     readonly float visDist = 10.0f;
     readonly float visAngle = 30.0f;
 
-    readonly float shootDist = 7.0f;
+    readonly float shootDist = 5.0f;
 
     public static readonly int IS_MOVE_HASH = Animator.StringToHash("IsMove");
+    public static readonly int IS_ATTACK_HASH = Animator.StringToHash("IsAttack");
 
     public EnemyState(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator)
     {
@@ -104,7 +105,6 @@ public class Idle : EnemyState
     {
         name = STATE.IDLE;
         agent.isStopped = true;
-        Debug.Log("Idle");
     }
 
     public override void Enter()
@@ -133,7 +133,6 @@ public class Pursue : EnemyState
         agent.speed = 5;
         agent.SetDestination(player.transform.position);
         animator.SetBool(IS_MOVE_HASH, true);
-        Debug.Log("Pursue");
     }
     
     public override void Enter()
@@ -153,6 +152,7 @@ public class Pursue : EnemyState
 
     public override void Exit()
     {
+        animator.SetBool(IS_MOVE_HASH, false);
         base.Exit();
     }
 }
@@ -164,7 +164,7 @@ public class Attack : EnemyState
     {
         name = STATE.ATTACK;
         agent.isStopped = true;
-        Debug.Log("Attack");
+        animator.SetBool(IS_ATTACK_HASH, true);
     }
 
     public override void Enter()
@@ -192,6 +192,7 @@ public class Attack : EnemyState
 
     public override void Exit()
     {
+        animator.SetBool(IS_ATTACK_HASH, false);
         base.Exit();
     }
 }
@@ -200,7 +201,6 @@ public class Die : EnemyState
     public Die(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator) : base(_enemy, _agent, _player, _animator)
     {
         name = STATE.DIE;
-        Debug.Log("Die");
     }
 
     public override void Enter()
