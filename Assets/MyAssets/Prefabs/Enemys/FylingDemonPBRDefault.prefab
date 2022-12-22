@@ -2179,6 +2179,8 @@ GameObject:
   - component: {fileID: 3891923349452803438}
   - component: {fileID: 3891923349461803650}
   - component: {fileID: -3714960077399218805}
+  - component: {fileID: 466386258101779130}
+  - component: {fileID: -3834988836937356727}
   m_Layer: 0
   m_Name: FylingDemonPBRDefault
   m_TagString: Enemy
@@ -2243,6 +2245,34 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &466386258101779130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3891923349452443982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a535b5b09597d41559384beb0ea72d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: -3714960077399218805}
+  animator: {fileID: 3891923349461803650}
+--- !u!136 &-3834988836937356727
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3891923349452443982}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.0278437
+  m_Height: 2.2902844
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.348934, z: 0.21504736}
 --- !u!1 &3891923349452443984
 GameObject:
   m_ObjectHideFlags: 0

@@ -433,6 +433,8 @@ GameObject:
   - component: {fileID: 8548725443831747411}
   - component: {fileID: 8548725443824041179}
   - component: {fileID: -3535299237564773944}
+  - component: {fileID: 8022956864796242005}
+  - component: {fileID: 3706577444306178448}
   m_Layer: 0
   m_Name: SpecterPBRDefault
   m_TagString: Enemy
@@ -498,6 +500,34 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8022956864796242005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8548725443831320241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a535b5b09597d41559384beb0ea72d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: -3535299237564773944}
+  animator: {fileID: 8548725443824041179}
+--- !u!136 &3706577444306178448
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8548725443831320241}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.9961257
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.4351404, z: 0}
 --- !u!1 &8548725443831320243
 GameObject:
   m_ObjectHideFlags: 0

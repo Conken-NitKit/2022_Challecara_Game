@@ -1692,6 +1692,8 @@ GameObject:
   - component: {fileID: 1802286859466067829}
   - component: {fileID: 1802286859456520337}
   - component: {fileID: -3687444413792175945}
+  - component: {fileID: 9081917818091198769}
+  - component: {fileID: 7781405160374145098}
   m_Layer: 0
   m_Name: BlackKnightPBRDefault
   m_TagString: Enemy
@@ -1756,6 +1758,34 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &9081917818091198769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802286859466036053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a535b5b09597d41559384beb0ea72d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: -3687444413792175945}
+  animator: {fileID: 1802286859456520337}
+--- !u!136 &7781405160374145098
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802286859466036053}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.78872466
+  m_Height: 2.674603
+  m_Direction: 1
+  m_Center: {x: -0.038496614, y: 1.2800124, z: 0.17323476}
 --- !u!1 &1802286859466036055
 GameObject:
   m_ObjectHideFlags: 0
