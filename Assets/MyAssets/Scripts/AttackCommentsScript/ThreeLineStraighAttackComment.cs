@@ -11,7 +11,6 @@ public class ThreeLineStraighAttackComment : CommentsNature
     public GameObject playerObject;
     public Comments commets;
 
-
     void FixedUpdate(){
         
     }
