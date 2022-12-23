@@ -7,14 +7,11 @@ using UnityEngine;
 /// </summary>
 public class OneLineStraightAttackComment : CommentsNature
 {
-    public GameObject oneLineStraightAttackCommentTextPrefab;
-   
+    [SerializeField] GameObject oneLineStraightAttackCommentTextPrefab;
+    private GameObject playerPrefab;
+    [SerializeField] Rigidbody commentRigidbody;
 
-    void FixedUpdate(){
-        //Transform playerTransform = playerObject.transform;
-        //Vector3 playerPos = playerTransform.position;
-
-        //Instantiate(commentTextPrefab, new Vector3(playerPos.x, playerPos.y, playerPos.z), commentTextPrefab.transform.rotation);
-        oneLineStraightAttackCommentTextPrefab.transform.position += new Vector3(0, 0, 1) * commentSpeed;
+    void Start(){
+        commentRigidbody.AddForce(transform.right * commentSpeed);
     }
 }

@@ -10,9 +10,7 @@ using UnityEngine.UI;
 /// <summary>
 public class CommentsNature : MonoBehaviour{
     
-    //public GameObject commentTextPrefab;
     public float commentSpeed = 10.0f;
-    public float playerRotate;
 
     //public float attackPower;
     //public int commentLength;
@@ -36,9 +34,8 @@ public class GenerateComments : MonoBehaviour
         Transform playerTransform = playerObjectPrefab.transform;
         Vector3 playerPos = playerTransform.position;
 
-        Debug.Log(comment);
         commentTextPrefab.GetComponent<TextMesh>().text = comment; //追加
-        GameObject newTextObj = Instantiate(commentTextPrefab, new Vector3(playerPos.x, playerPos.y, playerPos.z), Quaternion.Euler(90, 0, 90)); //インスタンス化
+        GameObject newTextObj = Instantiate(commentTextPrefab, new Vector3(playerPos.x, playerPos.y, playerPos.z), Quaternion.Euler(90, playerTransform.eulerAngles.y, 90)); //インスタンス化
 
         yield return new WaitForSeconds(0.1f);
         commentList.Remove(comment);

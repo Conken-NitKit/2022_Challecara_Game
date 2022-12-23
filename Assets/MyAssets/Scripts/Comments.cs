@@ -34,12 +34,6 @@ public class Comments : MonoBehaviour
             commentList.Add(c.Message);
         }
 
-        /*
-        foreach (var comment in commentList)
-        {
-            StartCoroutine(generateComments.GetComments(comment));
-        }
-        */
         StartCoroutine(generateComments.GetComments(commentList.Last()));
     }
 }

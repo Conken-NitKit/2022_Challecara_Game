@@ -156,3 +156,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commentSpeed: 0.1
   oneLineStraightAttackCommentTextPrefab: {fileID: 5504908394044153005}
+  commentRigidbody: {fileID: 411133158997652626}
