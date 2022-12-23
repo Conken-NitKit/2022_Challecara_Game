@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class TestScript : MonoBehaviour
@@ -26,6 +27,11 @@ public class TestScript : MonoBehaviour
             _testSpawner.IncreaseMaxCount(increaseNum);
             time = 10;
         }
-        Debug.Log(_scoreManager.Score);
+        _scoreManager.Score
+            .Subscribe(x =>
+            {
+                Debug.Log(x);
+            }).AddTo(this);
+        ;
     }
 }
