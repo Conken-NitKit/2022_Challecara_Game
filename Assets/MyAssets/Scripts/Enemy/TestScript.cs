@@ -2,13 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class TestScript : MonoBehaviour
 {
     [SerializeField] private EnemySpawner _testSpawner;
     [SerializeField] private GameObject _testPref;
+    [SerializeField] private ScoreManager _scoreManager;
     private float time = 10;
-    private int increaseNum = 5;
+    private int increaseNum = 2;
     void Start()
     {
         _testSpawner.Init(10, _testPref,new TestFactory());
@@ -20,9 +22,10 @@ public class TestScript : MonoBehaviour
         time -= Time.deltaTime;
         if (　time < 0f )
         {
-            Debug.Log($"敵を{increaseNum}増やすよ！");
+            Debug.Log($"敵を{increaseNum}匹増やすよ！");
             _testSpawner.IncreaseMaxCount(increaseNum);
             time = 10;
         }
+        Debug.Log(_scoreManager.Score);
     }
 }
