@@ -1,16 +1,34 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
-public class EnemyMove: MonoBehaviour
+public class EnemyMove : MonoBehaviour
 {
     [SerializeField]
-    private Transform m_Target;
+    private NavMeshAgent agent;
+    private Transform player;
+    
+    private EnemyState currentState;
 
     [SerializeField]
-    private NavMeshAgent m_Agent;
+    private Animator animator;
+
+    [SerializeField]
+    private Enemy enemy;
+
+    void Start()
+    {
+        player = GameObject.FindWithTag("Player").transform;
+        currentState = new Pursue(this.gameObject, agent, player, animator, true);
+    }
+
     void Update()
     {
-        m_Agent.SetDestination(m_Target.position);
+        currentState = currentState.Process();
+        if (currentState.name.ToString() == "ATTACK")
+        {
+            enemy.Attack();
+        }
     }
 }

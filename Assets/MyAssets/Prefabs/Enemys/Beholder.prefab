@@ -1490,8 +1490,9 @@ GameObject:
   - component: {fileID: -7015110725795387850}
   - component: {fileID: -3227373993213606087}
   - component: {fileID: 4521719738374553680}
+  - component: {fileID: -2740690280838540816}
   m_Layer: 0
-  m_Name: BeholderPBRDefault
+  m_Name: Beholder
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1510,6 +1511,7 @@ Transform:
   m_Children:
   - {fileID: 4530003306004526968}
   - {fileID: 4530003306004526948}
+  - {fileID: 7280480934243086912}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1568,6 +1570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: -7015110725795387850}
   animator: {fileID: 4530003305994672282}
+  enemy: {fileID: -2740690280838540816}
 --- !u!136 &4521719738374553680
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1582,6 +1585,19 @@ CapsuleCollider:
   m_Height: 2.3460515
   m_Direction: 1
   m_Center: {x: -0.042017456, y: 1.1652402, z: 0.0000000021241418}
+--- !u!114 &-2740690280838540816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4530003306004163418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5aaef571cc2243948501b0e8811533e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: {fileID: 6771021759794903510}
 --- !u!1 &4530003306004163420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,3 +1675,87 @@ Transform:
   m_Father: {fileID: 4530003306004526948}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6771021759794903510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7280480934243086912}
+  - component: {fileID: 7387334989514313287}
+  - component: {fileID: 1783068598150282391}
+  - component: {fileID: 1803246045493712945}
+  - component: {fileID: 5245858723793434721}
+  m_Layer: 0
+  m_Name: AttackRange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7280480934243086912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6771021759794903510}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.45, z: 2.52}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_Children: []
+  m_Father: {fileID: 4530003306004526970}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7387334989514313287
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6771021759794903510}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &1783068598150282391
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6771021759794903510}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1803246045493712945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6771021759794903510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b82b26741dbe54481b3b2e94827fcab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyName: Beholder
+--- !u!54 &5245858723793434721
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6771021759794903510}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

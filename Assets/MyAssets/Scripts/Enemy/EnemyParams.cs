@@ -9,4 +9,5 @@ public class EnemyParams : ScriptableObject
 
         [SerializeField] public float atk;
         [SerializeField] public int score;
+        [SerializeField] public int speed;
     }
