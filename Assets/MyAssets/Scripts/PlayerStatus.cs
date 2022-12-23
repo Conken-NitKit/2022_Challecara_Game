@@ -54,8 +54,6 @@ public class PlayerStatus : MonoBehaviour
     public void DecreaseHp(float damageTaken)
     {
         playerHp -= damageTaken;
-        
-        Debug.Log(playerHp);
 
         GameOverSubject.OnNext(playerHp);
     }

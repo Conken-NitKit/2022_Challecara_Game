@@ -1742,6 +1742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82b26741dbe54481b3b2e94827fcab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyName: Beholder
 --- !u!54 &5245858723793434721
 Rigidbody:
   m_ObjectHideFlags: 0

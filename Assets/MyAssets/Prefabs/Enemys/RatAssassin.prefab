@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82b26741dbe54481b3b2e94827fcab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyName: RatAssassin
 --- !u!1 &8925892822458641409
 GameObject:
   m_ObjectHideFlags: 0

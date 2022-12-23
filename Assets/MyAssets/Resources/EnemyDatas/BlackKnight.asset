@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: BlackKnight
   maxHp: 15
-  atk: 10
+  atk: 1
   score: 7
   speed: 2

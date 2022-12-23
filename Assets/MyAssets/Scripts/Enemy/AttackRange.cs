@@ -9,12 +9,24 @@ public class AttackRange : MonoBehaviour
     private bool isAttack = false;
     private float seconds = 0.1f;
     
+    private static EnemyParams param = null;
+
+    [SerializeField]
+    private string enemyName;
+
+    private PlayerStatus playerStatus;
+
+    void Start()
+    {
+        param = Resources.Load<EnemyParams>($"EnemyDatas/{enemyName}");
+        playerStatus = GameObject.FindWithTag("Player").GetComponent<PlayerStatus>();
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
         if (isAttack)
         {
-            Debug.Log(collider.name);
-            collider.gameObject.GetComponent<PlayerStatus>().DecreaseHp(5.0f);
+            playerStatus.DecreaseHp(param.atk);
         }
     }
 
