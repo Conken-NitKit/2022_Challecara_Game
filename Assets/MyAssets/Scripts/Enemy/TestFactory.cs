@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 
 /// <summary>
@@ -21,3 +23,6 @@ public class TestFactory : EnemyFactory {
     }
     
 }
+
+
+

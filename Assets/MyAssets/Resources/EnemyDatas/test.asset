@@ -15,4 +15,4 @@ MonoBehaviour:
   enemyName: testes
   maxHp: 12
   atk: 2
-  score: 2
+  score: 4
