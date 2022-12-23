@@ -17,7 +17,7 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
-        currentState = new Pursue(this.gameObject, agent, player, animator);
+        currentState = new Pursue(this.gameObject, agent, player, animator, true);
     }
 
     void Update()

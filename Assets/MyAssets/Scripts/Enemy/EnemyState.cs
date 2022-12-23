@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
+using System;
 using UnityEditor;
 
 public class EnemyState
@@ -30,21 +31,27 @@ public class EnemyState
     protected NavMeshAgent agent;
     protected Animator animator;
 
+    protected bool canAttack;
+
     readonly float visDist = 10.0f;
     readonly float visAngle = 30.0f;
 
     readonly float shootDist = 5.0f;
+    
+    readonly float rotationSpeed = 2.0f;
 
     public static readonly int IS_MOVE_HASH = Animator.StringToHash("IsMove");
     public static readonly int IS_ATTACK_HASH = Animator.StringToHash("IsAttack");
+    public static readonly int IS_IDLE_HASH = Animator.StringToHash("IsIdle");
 
-    public EnemyState(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator)
+    public EnemyState(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack)
     {
         enemy = _enemy;
         agent = _agent;
         stage = EVENT.ENTER;
         player = _player;
         animator = _animator;
+        canAttack = _canAttack;
     }
 
     public virtual void Enter()
@@ -97,14 +104,37 @@ public class EnemyState
         }
         return false;
     }
+
+    public void LookAtPlayer()
+    {
+        Vector3 direction = player.position - enemy.transform.position;
+        float angle = Vector3.Angle(direction, enemy.transform.position);
+        direction.y = 0;
+        
+        enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation,
+            Quaternion.LookRotation(direction),
+            Time.deltaTime * rotationSpeed);
+    }
+
+    public async UniTask WaitAttack(float seconds)
+    {
+        canAttack = false;
+        Debug.Log("Stop!");
+        await UniTask.Delay(TimeSpan.FromSeconds(seconds));
+        Debug.Log("GO!");
+        canAttack = true;
+    }
 }
 
 public class Idle : EnemyState
 {
-    public Idle(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator) : base(_enemy, _agent, _player, _animator)
+    public Idle(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack) : base(_enemy, _agent, _player, _animator , _canAttack)
     {
         name = STATE.IDLE;
         agent.isStopped = true;
+        animator.SetBool(IS_IDLE_HASH, true);
+        
+        WaitAttack(3).Forget();
     }
 
     public override void Enter()
@@ -114,11 +144,24 @@ public class Idle : EnemyState
 
     public override void Update()
     {
-        stage = EVENT.EXIT;
+        LookAtPlayer();
+        
+        if (GetAttackPlayer() && canAttack)
+        {
+            nextState = new Attack(enemy, agent, player, animator, canAttack);
+            stage = EVENT.EXIT;
+        }
+        
+        if (!GetAttackPlayer())
+        {
+            nextState = new Pursue(enemy, agent, player, animator, canAttack);
+            stage = EVENT.EXIT;
+        }
     }
 
     public override void Exit()
     {
+        animator.SetBool(IS_IDLE_HASH, false);
         base.Exit();
     }
 }
@@ -126,7 +169,7 @@ public class Idle : EnemyState
 public class Pursue : EnemyState
 {
     
-    public Pursue(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator) : base(_enemy, _agent, _player, _animator)
+    public Pursue(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack) : base(_enemy, _agent, _player, _animator , _canAttack)
     {
         name = STATE.PURSUE;
         agent.isStopped = false;
@@ -144,7 +187,7 @@ public class Pursue : EnemyState
     {
         if (GetAttackPlayer())
         {
-            nextState = new Attack(enemy, agent, player, animator);
+            nextState = new Attack(enemy, agent, player, animator, canAttack);
             stage = EVENT.EXIT;
         }
         agent.SetDestination(player.transform.position);
@@ -159,12 +202,13 @@ public class Pursue : EnemyState
 
 public class Attack : EnemyState
 {
-    float rotationSpeed = 2.0f;
-    public Attack(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator) : base(_enemy, _agent, _player, _animator)
+    public Attack(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack) : base(_enemy, _agent, _player, _animator , _canAttack)
     {
         name = STATE.ATTACK;
         agent.isStopped = true;
         animator.SetBool(IS_ATTACK_HASH, true);
+
+        canAttack = true;
     }
 
     public override void Enter()
@@ -175,17 +219,16 @@ public class Attack : EnemyState
 
     public override void Update()
     {
-        Vector3 direction = player.position - enemy.transform.position;
-        float angle = Vector3.Angle(direction, enemy.transform.position);
-        direction.y = 0;
-        
-        enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation,
-                                                    Quaternion.LookRotation(direction),
-                                                    Time.deltaTime * rotationSpeed);
+        LookAtPlayer();
+        if (GetAttackPlayer() && canAttack)
+        {
+            nextState = new Idle(enemy, agent, player, animator, canAttack);
+            stage = EVENT.EXIT;
+        }
 
         if (!GetAttackPlayer())
         {
-            nextState = new Pursue(enemy, agent, player, animator);
+            nextState = new Pursue(enemy, agent, player, animator, canAttack);
             stage = EVENT.EXIT;
         }
     }
@@ -198,7 +241,7 @@ public class Attack : EnemyState
 }
 public class Die : EnemyState
 {
-    public Die(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator) : base(_enemy, _agent, _player, _animator)
+    public Die(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack) : base(_enemy, _agent, _player, _animator , _canAttack)
     {
         name = STATE.DIE;
     }
