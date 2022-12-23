@@ -1489,7 +1489,7 @@ GameObject:
   - component: {fileID: 4530003305994672282}
   - component: {fileID: -7015110725795387850}
   - component: {fileID: -3227373993213606087}
-  - component: {fileID: -5201863789423718575}
+  - component: {fileID: 4521719738374553680}
   m_Layer: 0
   m_Name: BeholderPBRDefault
   m_TagString: Enemy
@@ -1568,8 +1568,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: -7015110725795387850}
   animator: {fileID: 4530003305994672282}
---- !u!135 &-5201863789423718575
-SphereCollider:
+--- !u!136 &4521719738374553680
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1578,9 +1578,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.92827797
-  m_Center: {x: 0, y: 1.4997239, z: -0.02100885}
+  m_Radius: 0.92017496
+  m_Height: 2.3460515
+  m_Direction: 1
+  m_Center: {x: -0.042017456, y: 1.1652402, z: 0.0000000021241418}
 --- !u!1 &4530003306004163420
 GameObject:
   m_ObjectHideFlags: 0

@@ -2180,7 +2180,7 @@ GameObject:
   - component: {fileID: 3891923349461803650}
   - component: {fileID: -3714960077399218805}
   - component: {fileID: 466386258101779130}
-  - component: {fileID: -3834988836937356727}
+  - component: {fileID: 6799893897270973632}
   m_Layer: 0
   m_Name: FylingDemonPBRDefault
   m_TagString: Enemy
@@ -2259,7 +2259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: -3714960077399218805}
   animator: {fileID: 3891923349461803650}
---- !u!136 &-3834988836937356727
+--- !u!136 &6799893897270973632
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2270,9 +2270,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1.0278437
-  m_Height: 2.2902844
+  m_Height: 3.4289327
   m_Direction: 1
-  m_Center: {x: 0, y: 1.348934, z: 0.21504736}
+  m_Center: {x: -0.000000024865695, y: 0.7796099, z: 0.21504737}
 --- !u!1 &3891923349452443984
 GameObject:
   m_ObjectHideFlags: 0

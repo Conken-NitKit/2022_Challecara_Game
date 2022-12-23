@@ -462,6 +462,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackKnightPBRDefault
       objectReference: {fileID: 0}
+    - target: {fileID: 1802286859466036053, guid: e103fa41e2eff4540b2de9e434189a87, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1802286859466067829, guid: e103fa41e2eff4540b2de9e434189a87, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -605,6 +609,10 @@ PrefabInstance:
     - target: {fileID: 8925892822458641477, guid: 0d03aee557339401b81ce473378cb775, type: 3}
       propertyPath: m_Name
       value: RatAssassinPBRDefault
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925892822458641477, guid: 0d03aee557339401b81ce473378cb775, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8925892822458740837, guid: 0d03aee557339401b81ce473378cb775, type: 3}
       propertyPath: m_RootOrder
@@ -1495,9 +1503,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1698855051}
     m_Modifications:
+    - target: {fileID: -3834988836937356727, guid: 226aa9c68efbc40a187df1379d393f69, type: 3}
+      propertyPath: m_Height
+      value: 3.4289327
+      objectReference: {fileID: 0}
+    - target: {fileID: -3834988836937356727, guid: 226aa9c68efbc40a187df1379d393f69, type: 3}
+      propertyPath: m_Center.x
+      value: -0.000000024865695
+      objectReference: {fileID: 0}
+    - target: {fileID: -3834988836937356727, guid: 226aa9c68efbc40a187df1379d393f69, type: 3}
+      propertyPath: m_Center.y
+      value: 0.7796099
+      objectReference: {fileID: 0}
+    - target: {fileID: -3834988836937356727, guid: 226aa9c68efbc40a187df1379d393f69, type: 3}
+      propertyPath: m_Center.z
+      value: 0.21504737
+      objectReference: {fileID: 0}
     - target: {fileID: 3891923349452443982, guid: 226aa9c68efbc40a187df1379d393f69, type: 3}
       propertyPath: m_Name
       value: FylingDemonPBRDefault
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891923349452443982, guid: 226aa9c68efbc40a187df1379d393f69, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3891923349452803438, guid: 226aa9c68efbc40a187df1379d393f69, type: 3}
       propertyPath: m_RootOrder
@@ -1717,6 +1745,10 @@ PrefabInstance:
     - target: {fileID: 7512065305920264353, guid: 63175a10b5efc46e8a753ec0590ff03e, type: 3}
       propertyPath: m_Name
       value: LizardWarriorPBRDefault
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512065305920264353, guid: 63175a10b5efc46e8a753ec0590ff03e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7512065305920554177, guid: 63175a10b5efc46e8a753ec0590ff03e, type: 3}
       propertyPath: m_RootOrder
@@ -2022,6 +2054,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1698855051}
     m_Modifications:
+    - target: {fileID: 3706577444306178448, guid: e9a268b094f914c9095e4fdf7a401cbb, type: 3}
+      propertyPath: m_Height
+      value: 2.4171858
+      objectReference: {fileID: 0}
+    - target: {fileID: 3706577444306178448, guid: e9a268b094f914c9095e4fdf7a401cbb, type: 3}
+      propertyPath: m_Center.y
+      value: 1.2246103
+      objectReference: {fileID: 0}
     - target: {fileID: 8548725443831320241, guid: e9a268b094f914c9095e4fdf7a401cbb, type: 3}
       propertyPath: m_Name
       value: SpecterPBRDefault
@@ -2032,7 +2072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8548725443831747411, guid: e9a268b094f914c9095e4fdf7a401cbb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.98
+      value: -11
       objectReference: {fileID: 0}
     - target: {fileID: 8548725443831747411, guid: e9a268b094f914c9095e4fdf7a401cbb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2040,7 +2080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8548725443831747411, guid: e9a268b094f914c9095e4fdf7a401cbb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.24
+      value: 14.1
       objectReference: {fileID: 0}
     - target: {fileID: 8548725443831747411, guid: e9a268b094f914c9095e4fdf7a401cbb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3113,9 +3153,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1698855051}
     m_Modifications:
+    - target: {fileID: -5201863789423718575, guid: 630d14cdf46e74b1985e4f9400573ce3, type: 3}
+      propertyPath: m_Radius
+      value: 0.79787374
+      objectReference: {fileID: 0}
+    - target: {fileID: -5201863789423718575, guid: 630d14cdf46e74b1985e4f9400573ce3, type: 3}
+      propertyPath: m_Center.x
+      value: 3.7137038e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5201863789423718575, guid: 630d14cdf46e74b1985e4f9400573ce3, type: 3}
+      propertyPath: m_Center.y
+      value: 1.6301281
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263586740675371264, guid: 630d14cdf46e74b1985e4f9400573ce3, type: 3}
+      propertyPath: m_Height
+      value: 2.3460515
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263586740675371264, guid: 630d14cdf46e74b1985e4f9400573ce3, type: 3}
+      propertyPath: m_Center.x
+      value: -0.042017456
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263586740675371264, guid: 630d14cdf46e74b1985e4f9400573ce3, type: 3}
+      propertyPath: m_Center.y
+      value: 1.1652402
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263586740675371264, guid: 630d14cdf46e74b1985e4f9400573ce3, type: 3}
+      propertyPath: m_Center.z
+      value: 0.0000000021241418
+      objectReference: {fileID: 0}
     - target: {fileID: 4530003306004163418, guid: 630d14cdf46e74b1985e4f9400573ce3, type: 3}
       propertyPath: m_Name
       value: BeholderPBRDefault
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530003306004163418, guid: 630d14cdf46e74b1985e4f9400573ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4530003306004526970, guid: 630d14cdf46e74b1985e4f9400573ce3, type: 3}
       propertyPath: m_RootOrder
