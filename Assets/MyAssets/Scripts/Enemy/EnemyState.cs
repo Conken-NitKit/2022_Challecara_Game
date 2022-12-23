@@ -36,13 +36,14 @@ public class EnemyState
     readonly float visDist = 10.0f;
     readonly float visAngle = 30.0f;
 
-    readonly float shootDist = 5.0f;
+    readonly float shootDist = 4.5f;
     
     readonly float rotationSpeed = 2.0f;
 
     public static readonly int IS_MOVE_HASH = Animator.StringToHash("IsMove");
     public static readonly int IS_ATTACK_HASH = Animator.StringToHash("IsAttack");
     public static readonly int IS_IDLE_HASH = Animator.StringToHash("IsIdle");
+    public static readonly int IS_DIE_HASH = Animator.StringToHash("IsDie");
 
     public EnemyState(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack)
     {
@@ -119,9 +120,7 @@ public class EnemyState
     public async UniTask WaitAttack(float seconds)
     {
         canAttack = false;
-        Debug.Log("Stop!");
         await UniTask.Delay(TimeSpan.FromSeconds(seconds));
-        Debug.Log("GO!");
         canAttack = true;
     }
 }
@@ -244,6 +243,7 @@ public class Die : EnemyState
     public Die(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack) : base(_enemy, _agent, _player, _animator , _canAttack)
     {
         name = STATE.DIE;
+        animator.SetBool(IS_DIE_HASH, true);
     }
 
     public override void Enter()
@@ -258,6 +258,7 @@ public class Die : EnemyState
 
     public override void Exit()
     {
+        animator.SetBool(IS_DIE_HASH, false);
         base.Exit();
     }
 }
