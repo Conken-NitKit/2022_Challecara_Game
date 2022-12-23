@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Result : MonoBehaviour
-{
+{ 
+    [SerializeField] private RankingManager rankingManager;
+
     public void SetArguments(int numberofkill,double timesurvived)
     {
         Debug.Log("ok");
