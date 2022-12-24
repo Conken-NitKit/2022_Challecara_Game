@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// コメントを３列に分割して3方向に直進させる派生クラス
+/// コメントを３列に分割して3方向に直進させる派生クラス (45 90 135)
 /// </summary>
 public class ThreeLineStraighAttackComment : CommentsNature
 {
@@ -12,7 +12,8 @@ public class ThreeLineStraighAttackComment : CommentsNature
     [SerializeField] Rigidbody threeLineStraighAttackComment_Rigidbody;
 
 
-    void Start(){
-        //commentRigidbody.AddForce(transform.right * commentSpeed);
+    public void Start(){
+        //threeLineStraighAttackComment_Rigidbody.AddForce(transform.right * commentSpeed);
+        Debug.Log("3列に分岐");
     }
 }

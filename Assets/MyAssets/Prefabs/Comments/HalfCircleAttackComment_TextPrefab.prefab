@@ -125,6 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0ab180a619e403e88f5fc94e665a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commentSpeed: 100
+  commentSpeed: 500
   halfCircleAttackComment_TextPrefab: {fileID: 8864557942679785209}
   halfCircleAttackComment_Rigidbody: {fileID: 0}

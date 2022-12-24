@@ -10,7 +10,7 @@ using UnityEngine.UI;
 /// <summary>
 public class CommentsNature : MonoBehaviour{
     
-    public float commentSpeed = 100.0f;
+    public float commentSpeed = 500.0f;
 
     //public float attackPower;
     //public int commentLength;
@@ -29,26 +29,57 @@ public class GenerateComments : MonoBehaviour
     public GameObject oneLineStraightAttackComment_TextPrefab; //1直線
     public GameObject threeLineStraighAttackComment_TextPrefab; //3方向に直進
     public GameObject halfCircleAttackComment_Rigidbody; //5文字のコメントを半円状に
-    
+
+    public OneLineStraightAttackComment oneLineStraightAttackComment;
+    public ThreeLineStraighAttackComment threeLineStraighAttackComment;
+    public HalfCircleAttackComment halfCircleAttackComment;
+
     public GameObject playerObjectPrefab;
 
 
     public IEnumerator GetComments(string comment){
+        
         //取得したコメントの半角と全角の空白を消去
         string commentReplaceAfter = comment.Replace(" ","").Replace("　","");
-        Debug.Log(commentReplaceAfter);
-    
+        int commentLength = commentReplaceAfter.Length;
+
         //取得したコメントを発射する座標であるプレイヤーの座標の取得
         Transform playerTransform = playerObjectPrefab.transform;
         Vector3 playerPos = playerTransform.position;
-        
-        //コメントの３DオブジェクトのプレハブにあるTextMeshに入力されたコメントを代入したもののインスタンス化
-        oneLineStraightAttackComment_TextPrefab.GetComponent<TextMesh>().text = commentReplaceAfter; 
-        GameObject newTextObj = Instantiate(oneLineStraightAttackComment_TextPrefab, new Vector3(playerPos.x, playerPos.y, playerPos.z), Quaternion.Euler(90, playerTransform.eulerAngles.y, 90)); //インスタンス化
-    
+
+        if(commentLength == 5){
+
+            //5文字に分岐　(30 60 90 120 150)
+
+            //Debug.Log(commentLength + "　→5列");
+            Debug.Log("5!!!!!!!!!!");
+            //halfCircleAttackComment.Start();
+
+        }else if(commentLength % 3 == 0){
+
+            //３列に分岐 (45 90 135)
+            Debug.Log("3!!!!!!!!!!");
+            
+            //Debug.Log(commentLength + "　→3列");
+            //threeLineStraighAttackComment.Start();
+
+        }else{
+
+            //１列に直行 (90)
+            Debug.Log("1!!!!!!!!!!!");
+
+            //Debug.Log(commentLength + "　→1列");
+            //oneLineStraightAttackComment.Start();
+
+            //コメントの３DオブジェクトのプレハブにあるTextMeshに入力されたコメントを代入したもののインスタンス化
+            oneLineStraightAttackComment_TextPrefab.GetComponent<TextMesh>().text = commentReplaceAfter; 
+            GameObject newTextObj = Instantiate(oneLineStraightAttackComment_TextPrefab, new Vector3(playerPos.x, playerPos.y, playerPos.z), Quaternion.Euler(90, playerTransform.eulerAngles.y, 90)); //インスタンス化
+
+        }
+       
 
         yield return new WaitForSeconds(0.1f);
-        commentList.Remove(comment);
+        commentList.Remove(commentReplaceAfter);
     }
  
 

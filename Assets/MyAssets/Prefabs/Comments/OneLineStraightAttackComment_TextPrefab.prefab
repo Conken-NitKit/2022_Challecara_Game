@@ -154,6 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 175418087820448f1aae40df5e8d31db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commentSpeed: 100
+  commentSpeed: 500
   oneLineStraightAttackComment_TextPrefab: {fileID: 5504908394044153005}
   oneLineStraightAttackComment_Rigidbody: {fileID: 0}

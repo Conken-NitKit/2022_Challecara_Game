@@ -125,6 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63f79ba9b7dc2443287d47471b1a5656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commentSpeed: 100
+  commentSpeed: 500
   threeLineStraighAttackComment_TextPrefab: {fileID: 8636881598232234548}
   threeLineStraighAttackComment_Rigidbody: {fileID: 0}
