@@ -60,6 +60,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (increaseNum <= 0){return;}
         MaxEnemyCount += increaseNum;
+        if(MaxEnemyCount <= 0){return;}
         for (int i = 0; i < increaseNum; i++)
         {
             GameObject obj = Instantiate(prefab, gameObject.transform, true);
