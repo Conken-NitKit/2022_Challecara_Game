@@ -18,6 +18,9 @@ public class GameMenuButtonController : BaseButtonController
             case "ButtonGameStart":
                 ChoiceGameStart();
                 break;
+            case "ButtonUserDataDecide":
+                DecideUserData();
+                break;
             default:
                 throw new System.Exception("Not implemented!!");
         }
@@ -39,7 +42,7 @@ public class GameMenuButtonController : BaseButtonController
 
     private void DecideUserData()
     {
-        
+        menuFlowManager.ProceedMainGame();
     }
 
     private void ChoiceGameStart()

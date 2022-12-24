@@ -37,9 +37,9 @@ public class Comment
 
 public class YoutubeComment : MonoBehaviour
 {
-    public string APIKEY;
+    [SerializeField] private string APIKEY;
 
-    public string VideoID;
+    private string VideoID;
 
     [SerializeField]
     float GetCommentInterval = 3f;
@@ -54,6 +54,7 @@ public class YoutubeComment : MonoBehaviour
     SuperChatEvent onSuperChat;
 
     string chatID;
+    public bool IsAvailableId { get; private set; } = false;
 
     private void Start()
     {
@@ -68,10 +69,16 @@ public class YoutubeComment : MonoBehaviour
     /// </summary>
     public void BeginGetComments()
     {
-        StartCoroutine(BeginGetCommentsImple());
+        StartCoroutine(BeginGetCommentSimple());
     }
 
-    IEnumerator BeginGetCommentsImple()
+    public bool TryGetChatId(string videoId)
+    {
+        StartCoroutine(GetChatID(videoId));
+        return IsAvailableId;
+    }
+
+    IEnumerator BeginGetCommentSimple()
     {
         if(string.IsNullOrEmpty(this.APIKEY))
         {
@@ -85,38 +92,43 @@ public class YoutubeComment : MonoBehaviour
             yield break;
         }
 
-        while(string.IsNullOrEmpty(this.chatID))
+        if (IsAvailableId)
         {
-            yield return getChatID();
+            yield return GetComments();
         }
-
-        yield return getComments();
+        else
+        {
+            Debug.LogError("先にTryGetChatIdを実行してね！まだChatIdは使えないよ！");
+            yield break;
+        }
     }
-
-    IEnumerator getChatID()
+    
+    IEnumerator GetChatID(string videoId)
     {
-        var url = $"https://www.googleapis.com/youtube/v3/videos?id={this.VideoID}&key={this.APIKEY}&part=liveStreamingDetails";
+        var url = $"https://www.googleapis.com/youtube/v3/videos?id={videoId}&key={this.APIKEY}&part=liveStreamingDetails";
 
         using (var req = UnityWebRequest.Get(url))
         {
             yield return req.SendWebRequest();
             var json = SimpleJSON.JSON.Parse(req.downloadHandler.text);
             this.chatID = json["items"][0]["liveStreamingDetails"]["activeLiveChatId"].ToString();
-            if (string.IsNullOrEmpty(this.chatID))
+             if (string.IsNullOrEmpty(this.chatID))
             {
                 Debug.LogError("activeLiveChatId not found.");
+                IsAvailableId = false;
                 yield break;
             }
         }
         this.chatID = chatID.Replace("\"", "");
-
+        IsAvailableId = true;
         Debug.Log("ChatID=" + this.chatID);
     }
 
+    
     System.DateTime latestSuperChat = new System.DateTime();
     System.DateTime latestComment = new System.DateTime();
 
-    IEnumerator getComments()
+    IEnumerator GetComments()
     {
         var commentURL = $"https://www.googleapis.com/youtube/v3/liveChat/messages?liveChatId={this.chatID}&key={this.APIKEY}&maxResults=2000&part=authorDetails,snippet";
 
