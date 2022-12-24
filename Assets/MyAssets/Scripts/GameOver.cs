@@ -6,6 +6,7 @@ using UnityEngine;
 using UniRx;
 using DG.Tweening;
 using UnityEngine.UI;
+using MyScript.Scene;
 
 public class GameOver : MonoBehaviour
 {
@@ -32,6 +33,9 @@ public class GameOver : MonoBehaviour
     [SerializeField]
     private Timer timer;
 
+    [SerializeField] 
+    private Main main;
+
     /// <summary>
     /// クリックしたらResultシーンへ遷移
     /// </summary>
@@ -39,8 +43,7 @@ public class GameOver : MonoBehaviour
     {
         sceneTransitionAnimation.CloseScene();
         await UniTask.Delay(TimeSpan.FromSeconds(1f));
-        var result = await SceneLoader.Load<Result>("Result");
-        result.SetArguments(scoreManager.score, timer.nowTimer.Value);
+        main.PassMainToResult(scoreManager.score, timer.nowTimer.Value);
     }
 
     /// <summary>

@@ -3588,6 +3588,7 @@ GameObject:
   - component: {fileID: 1385871761}
   - component: {fileID: 1385871762}
   - component: {fileID: 1385871763}
+  - component: {fileID: 1385871764}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Manager
@@ -3689,6 +3690,20 @@ MonoBehaviour:
   Posy: -400
   scoreManager: {fileID: 1385871761}
   timer: {fileID: 1385871760}
+  main: {fileID: 1385871764}
+--- !u!114 &1385871764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385871758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083575ebbaa4c4eb799671716718ac83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerName: {fileID: 330296156}
 --- !u!1 &1402215962
 GameObject:
   m_ObjectHideFlags: 0
