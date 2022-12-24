@@ -17,13 +17,13 @@ public class Result : MonoBehaviour
     [SerializeField]
     private Text totalScoreText;
 
-    public void SetArguments(int numberKill, double timeSurvived, string playerName)
+    public void SetArguments(int numberKill, double timeSurvived, string playerName, BattleLevel.BattleLevels battleLevel)
     {
         numberKillText.text = $"{numberKill:000}";
         timeSurvivedText.text = $"{(int)(timeSurvived/60):00}:{(int)(timeSurvived%60):00}";
         totalScore = (int)(numberKill * timeSurvived);
         totalScoreText.text = $"{totalScore}";
-        rankingManager.UserLogin(playerName, totalScore);
+        rankingManager.UserLogin(playerName, totalScore, battleLevel);
     }
     /// <summary>
     /// Rankingをロードする関数

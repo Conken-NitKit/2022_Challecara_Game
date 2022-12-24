@@ -8,14 +8,17 @@ public class Main : MonoBehaviour
 {
     [SerializeField] private Text playerName;
 
-    public void SetArguments(string liveURL,string battleLevel, string playerName)
+    private BattleLevel.BattleLevels battleLevel;
+
+    public void SetArguments(string liveURL, BattleLevel.BattleLevels battleLevel, string playerName)
     {
         this.playerName.text = playerName;
+        this.battleLevel = battleLevel;
     }
     
     public async Task PassMainToResult(int killCount,double timeSurvived)
     {
         var result = await SceneLoader.Load<Result>("Result");
-        result.SetArguments(killCount, timeSurvived, playerName.text);
+        result.SetArguments(killCount, timeSurvived, playerName.text, battleLevel);
     }
 }

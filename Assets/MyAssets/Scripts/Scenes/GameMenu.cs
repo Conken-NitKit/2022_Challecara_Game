@@ -15,7 +15,7 @@ public class GameMenu : MonoBehaviour
     public async Task PassGameMenutoMain()
     {
         var main = await SceneLoader.Load<Main>("Main");
-        main.SetArguments(chatIdInputField.text,gameMenuButtonController.ButtonName, nameInputField.text);
+        main.SetArguments(chatIdInputField.text,gameMenuButtonController.battleLevel, nameInputField.text);
     }
     public void LoadTitle()
     {

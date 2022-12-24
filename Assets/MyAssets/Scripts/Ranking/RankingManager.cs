@@ -6,10 +6,11 @@ using UnityEngine;
 
 public class RankingManager : MonoBehaviour
 {
-    BattleLevel.BattleLevels battleLevel = BattleLevel.BattleLevels.Hard;
+    BattleLevel.BattleLevels battleLevel;
 
-    public void UserLogin(string usename,int score)
+    public void UserLogin(string usename,int score, BattleLevel.BattleLevels battleLevel)
     {
+        this.battleLevel = battleLevel;
         PlayFabClientAPI.LoginWithCustomID
         (
             new LoginWithCustomIDRequest {CustomId = usename, CreateAccount = true},
