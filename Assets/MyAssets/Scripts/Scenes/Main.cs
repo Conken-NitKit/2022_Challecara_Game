@@ -10,7 +10,7 @@ namespace MyScript.Scene
     {
         [SerializeField] private Text playerName;
 
-        private BattleLevel.BattleLevels battleLevel;
+        public BattleLevel.BattleLevels battleLevel { get; private set; }
 
         public void SetArguments(string liveURL, BattleLevel.BattleLevels battleLevel, string playerName)
         {

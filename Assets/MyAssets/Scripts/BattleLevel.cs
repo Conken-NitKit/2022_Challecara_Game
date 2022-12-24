@@ -6,7 +6,7 @@ public static class BattleLevel
 {
     public enum BattleLevels
     {
-        Easy,
+        Easy = 1,
         Normal,
         Hard
     }
