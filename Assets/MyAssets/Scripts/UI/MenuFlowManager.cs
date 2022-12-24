@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class MenuFlowManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameMenu gameMenuLoader;
+    [SerializeField] private GameObject menuPanel;
+    [SerializeField] private GameObject levelPanel;
+    [SerializeField] private GameObject userDataPanel;
+
+    public void ProceedLevelChoice()
     {
-        
+        menuPanel.SetActive(false);
+        levelPanel.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ProceedUserDataInput()
     {
-        
+        levelPanel.SetActive(false);
+        userDataPanel.SetActive(true);
     }
+    public void ProceedMainGame()
+    {
+        levelPanel.SetActive(false);
+        userDataPanel.SetActive(true);
+        // ここにシーンロード処理
+    }
+    
 }

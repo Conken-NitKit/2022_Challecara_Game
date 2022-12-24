@@ -9,6 +9,7 @@ public static class SceneButtonType
     {
         BattleLevel,
         UserData,
+        MainMenu,
         PosshibleMash
     }
 }
