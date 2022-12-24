@@ -37,6 +37,7 @@ public class Result : MonoBehaviour
     }
     public void LoadGameMenu()
     {
+        Debug.Log("hoge");
         SceneLoader.Load<GameMenu>("GameMenu");
     }
 }
