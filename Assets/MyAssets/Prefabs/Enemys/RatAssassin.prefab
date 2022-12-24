@@ -797,6 +797,7 @@ MonoBehaviour:
   agent: {fileID: 5273990715403201988}
   animator: {fileID: 8925892822449151965}
   enemy: {fileID: 816924004836968566}
+  enemyName: RatAssassin
 --- !u!136 &7224702971821061484
 CapsuleCollider:
   m_ObjectHideFlags: 0

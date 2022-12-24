@@ -13,7 +13,6 @@ public class Beholder : Enemy
     public override void Init()
     {
         Hp = Params.maxHp;
-        Debug.Log("Beholder");
         gameObject.SetActive(true);
     }
 
@@ -25,6 +24,8 @@ public class Beholder : Enemy
     public override void AddedDamage(float damage)
     {
         Hp -= damage;
+        
+        Debug.Log(Hp);
         
         if (Hp < 0)
         {

@@ -31,13 +31,17 @@ public class EnemyState
     protected NavMeshAgent agent;
     protected Animator animator;
 
+    protected int pursueSpeed;
+
     protected bool canAttack;
+    
+    protected bool isDie;
 
     readonly float visDist = 10.0f;
     readonly float visAngle = 30.0f;
 
     readonly float shootDist = 4.5f;
-    
+
     readonly float rotationSpeed = 2.0f;
 
     public static readonly int IS_MOVE_HASH = Animator.StringToHash("IsMove");
@@ -45,7 +49,7 @@ public class EnemyState
     public static readonly int IS_IDLE_HASH = Animator.StringToHash("IsIdle");
     public static readonly int IS_DIE_HASH = Animator.StringToHash("IsDie");
 
-    public EnemyState(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack)
+    public EnemyState(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack, int _pursueSpeed)
     {
         enemy = _enemy;
         agent = _agent;
@@ -53,6 +57,7 @@ public class EnemyState
         player = _player;
         animator = _animator;
         canAttack = _canAttack;
+        pursueSpeed = _pursueSpeed;
     }
 
     public virtual void Enter()
@@ -127,7 +132,7 @@ public class EnemyState
 
 public class Idle : EnemyState
 {
-    public Idle(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack) : base(_enemy, _agent, _player, _animator , _canAttack)
+    public Idle(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack, int _pursueSpeed) : base(_enemy, _agent, _player, _animator , _canAttack, _pursueSpeed)
     {
         name = STATE.IDLE;
         agent.isStopped = true;
@@ -147,13 +152,13 @@ public class Idle : EnemyState
         
         if (GetAttackPlayer() && canAttack)
         {
-            nextState = new Attack(enemy, agent, player, animator, canAttack);
+            nextState = new Attack(enemy, agent, player, animator, canAttack, pursueSpeed);
             stage = EVENT.EXIT;
         }
         
         if (!GetAttackPlayer())
         {
-            nextState = new Pursue(enemy, agent, player, animator, canAttack);
+            nextState = new Pursue(enemy, agent, player, animator, canAttack, pursueSpeed);
             stage = EVENT.EXIT;
         }
     }
@@ -168,11 +173,11 @@ public class Idle : EnemyState
 public class Pursue : EnemyState
 {
     
-    public Pursue(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack) : base(_enemy, _agent, _player, _animator , _canAttack)
+    public Pursue(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack, int _pursueSpeed) : base(_enemy, _agent, _player, _animator , _canAttack, _pursueSpeed)
     {
         name = STATE.PURSUE;
         agent.isStopped = false;
-        agent.speed = 5;
+        agent.speed = pursueSpeed;
         agent.SetDestination(player.transform.position);
         animator.SetBool(IS_MOVE_HASH, true);
     }
@@ -186,7 +191,7 @@ public class Pursue : EnemyState
     {
         if (GetAttackPlayer())
         {
-            nextState = new Attack(enemy, agent, player, animator, canAttack);
+            nextState = new Attack(enemy, agent, player, animator, canAttack, pursueSpeed);
             stage = EVENT.EXIT;
         }
         agent.SetDestination(player.transform.position);
@@ -201,7 +206,7 @@ public class Pursue : EnemyState
 
 public class Attack : EnemyState
 {
-    public Attack(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack) : base(_enemy, _agent, _player, _animator , _canAttack)
+    public Attack(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack, int _pursueSpeed) : base(_enemy, _agent, _player, _animator , _canAttack, _pursueSpeed)
     {
         name = STATE.ATTACK;
         agent.isStopped = true;
@@ -221,13 +226,13 @@ public class Attack : EnemyState
         LookAtPlayer();
         if (GetAttackPlayer() && canAttack)
         {
-            nextState = new Idle(enemy, agent, player, animator, canAttack);
+            nextState = new Idle(enemy, agent, player, animator, canAttack, pursueSpeed);
             stage = EVENT.EXIT;
         }
 
         if (!GetAttackPlayer())
         {
-            nextState = new Pursue(enemy, agent, player, animator, canAttack);
+            nextState = new Pursue(enemy, agent, player, animator, canAttack, pursueSpeed);
             stage = EVENT.EXIT;
         }
     }
@@ -240,7 +245,7 @@ public class Attack : EnemyState
 }
 public class Die : EnemyState
 {
-    public Die(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack) : base(_enemy, _agent, _player, _animator , _canAttack)
+    public Die(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack, int _pursueSpeed) : base(_enemy, _agent, _player, _animator , _canAttack, _pursueSpeed)
     {
         name = STATE.DIE;
         animator.SetBool(IS_DIE_HASH, true);

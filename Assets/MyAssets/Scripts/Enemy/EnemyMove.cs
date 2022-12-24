@@ -16,11 +16,17 @@ public class EnemyMove : MonoBehaviour
 
     [SerializeField]
     private Enemy enemy;
+    
+    private static EnemyParams param = null;
+
+    [SerializeField]
+    private string enemyName;
 
     void Start()
     {
+        param = Resources.Load<EnemyParams>($"EnemyDatas/{enemyName}");
         player = GameObject.FindWithTag("Player").transform;
-        currentState = new Pursue(this.gameObject, agent, player, animator, true);
+        currentState = new Pursue(this.gameObject, agent, player, animator, true, param.speed);
     }
 
     void Update()
