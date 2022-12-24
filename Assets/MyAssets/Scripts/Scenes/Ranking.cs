@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ranking : MonoBehaviour
+namespace MyScript.Scene
 {
-    public void LoadGameMenu()
+    public class Ranking : MonoBehaviour
     {
-         SceneLoader.Load<GameMenu>("GameMenu");
+        public void LoadGameMenu()
+        {
+            SceneLoader.Load<GameMenu>("GameMenu");
+        }
     }
 }

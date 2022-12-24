@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine.UI;
 using DG.Tweening;
+using MyScript.Scene;
 
 /// <summary>
 ///タイトルの隕石にアニメーションをさせるクラス
