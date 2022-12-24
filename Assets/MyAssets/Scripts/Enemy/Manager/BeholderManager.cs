@@ -8,8 +8,6 @@ public class BeholderManager : MonoBehaviour
     private EnemySpawner _enemySpawner;
     [SerializeField] 
     private GameObject _enemyPref;
-    [SerializeField] 
-    private ScoreManager _scoreManager;
 
     [SerializeField]
     private int maxEnemyCount;

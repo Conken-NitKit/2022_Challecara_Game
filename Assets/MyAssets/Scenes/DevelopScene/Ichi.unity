@@ -658,7 +658,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemySpawner: {fileID: 352326916}
   _enemyPref: {fileID: 7512065305920264353, guid: 63175a10b5efc46e8a753ec0590ff03e, type: 3}
-  _scoreManager: {fileID: 0}
   maxEnemyCount: 5
 --- !u!1001 &370025890
 PrefabInstance:
@@ -1385,7 +1384,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemySpawner: {fileID: 782746240}
   _enemyPref: {fileID: 3891923349452443982, guid: 226aa9c68efbc40a187df1379d393f69, type: 3}
-  _scoreManager: {fileID: 0}
   maxEnemyCount: 5
 --- !u!1001 &818609941
 PrefabInstance:
@@ -1610,7 +1608,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemySpawner: {fileID: 914842512}
   _enemyPref: {fileID: 4530003306004163418, guid: 630d14cdf46e74b1985e4f9400573ce3, type: 3}
-  _scoreManager: {fileID: 0}
   maxEnemyCount: 5
 --- !u!1001 &1026345650
 PrefabInstance:
@@ -1925,7 +1922,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemySpawner: {fileID: 1320350174}
   _enemyPref: {fileID: 8548725443831320241, guid: e9a268b094f914c9095e4fdf7a401cbb, type: 3}
-  _scoreManager: {fileID: 0}
   maxEnemyCount: 5
 --- !u!1 &1330301104
 GameObject:
@@ -2723,7 +2719,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemySpawner: {fileID: 1590732259}
   _enemyPref: {fileID: 1802286859466036053, guid: e103fa41e2eff4540b2de9e434189a87, type: 3}
-  _scoreManager: {fileID: 0}
   maxEnemyCount: 5
 --- !u!1001 &1613628735
 PrefabInstance:
@@ -3209,11 +3204,10 @@ GameObject:
   - component: {fileID: 1902429243}
   - component: {fileID: 1902429242}
   - component: {fileID: 1902429244}
-  - component: {fileID: 1902429246}
   - component: {fileID: 1902429245}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3225,7 +3219,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902429241}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1bc0e9635a02f4bbe97267b274838d0e, type: 3}
   m_Name: 
@@ -3285,7 +3279,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902429241}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bda77a17d5e23443583e6a3be16c246f, type: 3}
   m_Name: 
@@ -3301,19 +3295,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55e31940e5581401a87908aad165f806, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemySpawner: {fileID: 0}
---- !u!114 &1902429246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1902429241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d252ca5df9db849ea9a9df7018b23728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1914432779
@@ -3375,7 +3356,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemySpawner: {fileID: 1914432780}
   _enemyPref: {fileID: 8925892822458641477, guid: 0d03aee557339401b81ce473378cb775, type: 3}
-  _scoreManager: {fileID: 0}
   maxEnemyCount: 5
 --- !u!1001 &1951946604
 PrefabInstance:

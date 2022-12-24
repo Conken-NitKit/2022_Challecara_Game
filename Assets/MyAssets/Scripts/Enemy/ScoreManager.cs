@@ -6,17 +6,20 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] private EnemySpawner enemySpawner;
-    public IReadOnlyReactiveProperty<int> Score => score;
+    //public IReadOnlyReactiveProperty<int> Score => score;
 
-    private readonly IntReactiveProperty score = new IntReactiveProperty(0);
+    //private readonly IntReactiveProperty score = new IntReactiveProperty(0);
 
-    private void Start()
+    public int score { get; private set; }
+
+    void Start()
     {
-        enemySpawner.OnEnemyCreated.Subscribe(enemy => {
-            enemy.OnAddScore.Subscribe(addScore => score.Value += addScore);
-        });
+        score = 0;
     }
     
-    
+    public void AddScore(int increaseNum)
+    {
+        score += increaseNum;
+        Debug.Log($"SCORE{score}");
+    }
 }

@@ -8,10 +8,6 @@ public class SpecterManager : MonoBehaviour
     private EnemySpawner _enemySpawner;
     [SerializeField] 
     private GameObject _enemyPref;
-    [SerializeField] 
-    private ScoreManager _scoreManager;
-    [SerializeField] 
-    private EnemyFactory _enemyFactory;
 
     [SerializeField]
     private int maxEnemyCount;

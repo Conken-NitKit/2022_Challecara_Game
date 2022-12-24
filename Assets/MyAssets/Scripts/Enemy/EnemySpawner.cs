@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
     private EnemyFactory enemyFactory;
     private GameObject prefab;
     private Random rand = new Random();
-    
+
     /// <summary>
     /// 初期化処理
     /// </summary>
@@ -107,7 +107,7 @@ public class EnemySpawner : MonoBehaviour
         {
             return;
         }
-        
+
         findObj.GetComponent<Transform>().position = spawnPos;
         findObj.GetComponent<Enemy>().Init();
     }

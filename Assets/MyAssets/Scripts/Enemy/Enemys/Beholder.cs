@@ -10,6 +10,13 @@ public class Beholder : Enemy
     [SerializeField]
     private GameObject attackRange;
     
+    private ScoreManager scoreManager;
+
+    private void Start()
+    {
+        scoreManager = GameObject.FindWithTag("Manager").GetComponent<ScoreManager>();
+    }
+    
     public override void Init()
     {
         Hp = Params.maxHp;
@@ -35,6 +42,7 @@ public class Beholder : Enemy
     
     public override void Dead()
     {
+        scoreManager.AddScore(1);
         gameObject.SetActive(false);
     }
 }
