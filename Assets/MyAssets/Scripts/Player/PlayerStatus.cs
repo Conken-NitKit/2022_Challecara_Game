@@ -79,4 +79,11 @@ public class PlayerStatus : MonoBehaviour
         runDoubleAtk = false;
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            DecreaseHp(10);
+        }
+    }
 }

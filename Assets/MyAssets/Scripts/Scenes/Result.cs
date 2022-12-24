@@ -6,9 +6,11 @@ public class Result : MonoBehaviour
 { 
     [SerializeField] private RankingManager rankingManager;
 
-    public void SetArguments(int numberofkill,double timesurvived)
+    private string playerName;
+
+    public void SetArguments(int numberofkill, double timesurvived)
     {
-        Debug.Log("ok");
+        rankingManager.UserLogin(playerName, (int)(numberofkill * timesurvived));
     }
     /// <summary>
     /// Rankingをロードする関数

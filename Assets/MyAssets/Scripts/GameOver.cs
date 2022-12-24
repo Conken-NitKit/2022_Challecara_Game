@@ -25,8 +25,12 @@ public class GameOver : MonoBehaviour
     [SerializeField] private float duration_Button;//フェードさせる時間(Button)
     [SerializeField] private float Posx;//隕石の最終的なx座標
     [SerializeField] private float Posy;//隕石の最終的なy座標
+    
+    [SerializeField]
+    private ScoreManager scoreManager;
 
-    int score;
+    [SerializeField]
+    private Timer timer;
 
     /// <summary>
     /// クリックしたらResultシーンへ遷移
@@ -36,7 +40,7 @@ public class GameOver : MonoBehaviour
         sceneTransitionAnimation.CloseScene();
         await UniTask.Delay(TimeSpan.FromSeconds(1f));
         var result = await SceneLoader.Load<Result>("Result");
-        Debug.Log("OnClick");
+        result.SetArguments(scoreManager.score, timer.nowTimer.Value);
     }
 
     /// <summary>
@@ -44,15 +48,6 @@ public class GameOver : MonoBehaviour
     /// </summary>
     void Start()
     {
-        var sequence = DOTween.Sequence()
-            .Append(gameOverPanel.DOFade(endvalue_Panel, duration_Panel))
-            .Join(gameOverText.DOText("Game over...", tweenTime_Text).SetEase(Ease.Linear))
-            .Join(meteo.rectTransform.DOLocalMove(new Vector3(Posx, Posy, 0f), tweenTime_meteo).SetEase(Ease.InCubic))
-            .Join(gameOverButton.DOFade(endvalue_Button, duration_Button))
-            .Join(buttonText.DOText("→Result", tweenTime_Text).SetEase(Ease.Linear))
-            .AppendCallback(() => Debug.Log("end."));
-        sequence.Play();
-        //sceneTransitionAnimation.CloseScene();
         playerStatus.OnPlayerHpDisappear.Subscribe(playerHp =>
         {
             if(playerHp <= 0)
@@ -60,13 +55,11 @@ public class GameOver : MonoBehaviour
                 var sequence = DOTween.Sequence()
                     .Append(gameOverPanel.DOFade(endvalue_Panel, duration_Panel))
                     .Join(gameOverText.DOText("Game over...", tweenTime_Text).SetEase(Ease.Linear))
-                    .Join(meteo.rectTransform.DOLocalMove(new Vector3(Posx, Posy, 0f), tweenTime_meteo).SetEase(Ease.InCubic))
+                    .Join(meteo.rectTransform.DOLocalMove(new Vector3(Posx, Posy, 0f), tweenTime_meteo)
+                        .SetEase(Ease.InCubic))
                     .Join(gameOverButton.DOFade(endvalue_Button, duration_Button))
-                    .Join(buttonText.DOText("→Result", tweenTime_Text).SetEase(Ease.Linear))
-                    .AppendCallback(() => Debug.Log("end."));
+                    .Join(buttonText.DOText("→Result", tweenTime_Text).SetEase(Ease.Linear));
                 sequence.Play();
-                sceneTransitionAnimation.CloseScene();
-                Debug.Log("GameOver");
             }
         });
     }

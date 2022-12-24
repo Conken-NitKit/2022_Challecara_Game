@@ -21,8 +21,16 @@ public class PlayerHPSlider : MonoBehaviour
         playerHPSlider.value = 100;
         playerStatus.OnPlayerHpDisappear.Subscribe(playerHp =>
         {
-            playerHPSlider.value = playerHp;
-            nowHP.text = $"{playerHp: 000} / 100";
+            if (playerHp < 0)
+            {
+                playerHPSlider.value = 0;
+                nowHP.text = $"000 / 100";
+            }
+            else
+            {
+                playerHPSlider.value = playerHp;
+                nowHP.text = $"{playerHp: 000} / 100";
+            }
         });
     }
 }
