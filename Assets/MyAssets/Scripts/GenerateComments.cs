@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,14 +29,28 @@ public class GenerateComments : MonoBehaviour
 
     public GameObject oneLineStraightAttackComment_TextPrefab; //1直線
     public GameObject threeLineStraighAttackComment_TextPrefab; //3方向に直進
-    public GameObject halfCircleAttackComment_Rigidbody; //5文字のコメントを半円状に
+    public GameObject halfCircleAttackComment_TextPrefab; //5文字のコメントを半円状に
 
-    public OneLineStraightAttackComment oneLineStraightAttackComment;
-    public ThreeLineStraighAttackComment threeLineStraighAttackComment;
-    public HalfCircleAttackComment halfCircleAttackComment;
+    private OneLineStraightAttackComment oneLineStraightAttackComment;
+    private ThreeLineStraighAttackComment threeLineStraighAttackComment;
+    private HalfCircleAttackComment halfCircleAttackComment;
 
     public GameObject playerObjectPrefab;
 
+
+    private void Awake()
+    {
+        oneLineStraightAttackComment =
+            oneLineStraightAttackComment_TextPrefab.GetComponent<OneLineStraightAttackComment>();
+        threeLineStraighAttackComment =
+            threeLineStraighAttackComment_TextPrefab.GetComponent<ThreeLineStraighAttackComment>();
+        halfCircleAttackComment = halfCircleAttackComment_TextPrefab.GetComponent<HalfCircleAttackComment>();
+    }
+
+    public void StartCoroutineComment(string text)
+    {
+        StartCoroutine(GetComments(text));
+    }
 
     public IEnumerator GetComments(string comment){
         
@@ -61,7 +76,9 @@ public class GenerateComments : MonoBehaviour
             Debug.Log("3!!!!!!!!!!");
             
             //Debug.Log(commentLength + "　→3列");
-            //threeLineStraighAttackComment.Start();
+            threeLineStraighAttackComment.Text = commentReplaceAfter;
+            GameObject newTextObj = Instantiate(threeLineStraighAttackComment_TextPrefab, new Vector3(playerPos.x, playerPos.y, playerPos.z), Quaternion.Euler(90, playerTransform.eulerAngles.y, 90)); //インスタンス化
+
 
         }else{
 
@@ -72,7 +89,8 @@ public class GenerateComments : MonoBehaviour
             //oneLineStraightAttackComment.Start();
 
             //コメントの３DオブジェクトのプレハブにあるTextMeshに入力されたコメントを代入したもののインスタンス化
-            oneLineStraightAttackComment_TextPrefab.GetComponent<TextMesh>().text = commentReplaceAfter; 
+            //oneLineStraightAttackComment_TextPrefab.GetComponent<TextMesh>().text = commentReplaceAfter; 
+            oneLineStraightAttackComment.Text = commentReplaceAfter; 
             GameObject newTextObj = Instantiate(oneLineStraightAttackComment_TextPrefab, new Vector3(playerPos.x, playerPos.y, playerPos.z), Quaternion.Euler(90, playerTransform.eulerAngles.y, 90)); //インスタンス化
 
         }

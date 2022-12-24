@@ -7,13 +7,12 @@ using UnityEngine;
 /// </summary>
 public class HalfCircleAttackComment : CommentsNature
 {
-    [SerializeField] GameObject halfCircleAttackComment_TextPrefab;
-    private GameObject playerPrefab;
     [SerializeField] Rigidbody halfCircleAttackComment_Rigidbody;
 
 
     public void Start(){
-        //halfCircleAttackComment_Rigidbody.AddForce(transform.right * commentSpeed);
+        
+        halfCircleAttackComment_Rigidbody.AddForce(transform.right * commentSpeed);
         Debug.Log("5文字に分岐");
     }
 }
