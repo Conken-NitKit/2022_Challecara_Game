@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using MyScript.Scene;
 public class Result : MonoBehaviour
 { 
     [SerializeField] private RankingManager rankingManager;
