@@ -15,11 +15,13 @@ public class Timer : MonoBehaviour
     [SerializeField] 
     private PlayerStatus playerStatus;
     
-    IEnumerator coroutine;
+    private bool isDie;
     
     public void StartCountUp()
     {
         nowTimer.Value = 0f;
+
+        isDie = false;
         
         var subscription = nowTimer.Subscribe(x =>
         {
@@ -30,17 +32,15 @@ public class Timer : MonoBehaviour
         {
             if(playerHp <= 0)
             {
-                StopCoroutine(coroutine);
+                isDie = true;
             }
         });
-
-        coroutine = CountUpTime();
         StartCoroutine(CountUpTime());
     }
 
     private IEnumerator CountUpTime()
     {
-        while (true)
+        while (!isDie)
         {
             yield return new WaitForSeconds(0.1f);
             nowTimer.Value += 0.1f;
