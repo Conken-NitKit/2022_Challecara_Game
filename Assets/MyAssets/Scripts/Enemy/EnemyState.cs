@@ -58,6 +58,7 @@ public class EnemyState
         animator = _animator;
         canAttack = _canAttack;
         pursueSpeed = _pursueSpeed;
+        isDie = false;
     }
 
     public virtual void Enter()
@@ -128,6 +129,11 @@ public class EnemyState
         await UniTask.Delay(TimeSpan.FromSeconds(seconds));
         canAttack = true;
     }
+
+    public void SetDieBool()
+    {
+        isDie = true;
+    }
 }
 
 public class Idle : EnemyState
@@ -149,6 +155,12 @@ public class Idle : EnemyState
     public override void Update()
     {
         LookAtPlayer();
+
+        if (isDie)
+        {
+            nextState = new Die(enemy, agent, player, animator, canAttack, pursueSpeed);
+            stage = EVENT.EXIT;
+        }
         
         if (GetAttackPlayer() && canAttack)
         {
@@ -189,6 +201,12 @@ public class Pursue : EnemyState
 
     public override void Update()
     {
+        if (isDie)
+        {
+            nextState = new Die(enemy, agent, player, animator, canAttack, pursueSpeed);
+            stage = EVENT.EXIT;
+        }
+        
         if (GetAttackPlayer())
         {
             nextState = new Attack(enemy, agent, player, animator, canAttack, pursueSpeed);
@@ -223,6 +241,12 @@ public class Attack : EnemyState
 
     public override void Update()
     {
+        if (isDie)
+        {
+            nextState = new Die(enemy, agent, player, animator, canAttack, pursueSpeed);
+            stage = EVENT.EXIT;
+        }
+        
         LookAtPlayer();
         if (GetAttackPlayer() && canAttack)
         {
@@ -249,6 +273,7 @@ public class Die : EnemyState
     {
         name = STATE.DIE;
         animator.SetBool(IS_DIE_HASH, true);
+        stage = EVENT.EXIT;
     }
 
     public override void Enter()
@@ -264,6 +289,8 @@ public class Die : EnemyState
     public override void Exit()
     {
         animator.SetBool(IS_DIE_HASH, false);
+        isDie = false;
+        nextState = new Pursue(enemy, agent, player, animator, canAttack, pursueSpeed);
         base.Exit();
     }
 }

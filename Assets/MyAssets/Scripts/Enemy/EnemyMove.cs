@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UniRx;
 
 public class EnemyMove : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class EnemyMove : MonoBehaviour
         param = Resources.Load<EnemyParams>($"EnemyDatas/{enemyName}");
         player = GameObject.FindWithTag("Player").transform;
         currentState = new Pursue(this.gameObject, agent, player, animator, true, param.speed);
+
     }
 
     void Update()

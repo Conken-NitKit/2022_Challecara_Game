@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Cysharp.Threading.Tasks;
+using System;
 public class LizardWarrior : Enemy
 {
     private static EnemyParams param = null;
@@ -11,6 +12,8 @@ public class LizardWarrior : Enemy
     private GameObject attackRange;
     
     private ScoreManager scoreManager;
+
+    private float seconds = 0.3f;
 
     private void Start()
     {
@@ -38,9 +41,10 @@ public class LizardWarrior : Enemy
         }
     }
     
-    public override void Dead()
+    public override async void Dead()
     {
         scoreManager.AddScore(1);
+        await UniTask.Delay(TimeSpan.FromSeconds(seconds));
         gameObject.SetActive(false);
     }
 }
