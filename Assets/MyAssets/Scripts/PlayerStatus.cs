@@ -39,7 +39,7 @@ public class PlayerStatus : MonoBehaviour
     /// 主に回復で使用する
     /// </summary>
     /// <param name="recoveryAmount">回復量</param>
-    private void IncreaseHp(float recoveryAmount)
+    public void IncreaseHp(float recoveryAmount)
     {
         playerHp += recoveryAmount;
 
@@ -51,7 +51,7 @@ public class PlayerStatus : MonoBehaviour
     /// 主に敵の攻撃から減らす
     /// </summary>
     /// <param name="damageTaken">受けたダメージ量</param>
-    private void DecreaseHp(float damageTaken)
+    public void DecreaseHp(float damageTaken)
     {
         playerHp -= damageTaken;
 
@@ -63,7 +63,7 @@ public class PlayerStatus : MonoBehaviour
     /// 受け取った値を攻撃力に掛ける
     /// </summary>
     /// <param name="buff">攻撃の倍率</param>
-    private IEnumerator DoubleAtk(float buff)
+    public IEnumerator DoubleAtk(float buff)
     {
         if (runDoubleAtk)
         {

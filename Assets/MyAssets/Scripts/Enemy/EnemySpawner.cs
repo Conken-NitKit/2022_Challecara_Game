@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 using Random = System.Random;
 
 /// <summary>
@@ -11,29 +13,39 @@ public class EnemySpawner : MonoBehaviour
     public float SpawnFrequency { get; private set; }
     public Vector3 SpawnRange{ get; set; } 
     public int MaxEnemyCount{ get; set; }
+    public List<GameObject> enemys = new List<GameObject>();
+    public IObservable<Enemy> OnEnemyCreated
+    {
+        get { return enemySubject; }
+    } 
+    
+    private Subject<Enemy> enemySubject = new Subject<Enemy>();
+    
     private EnemyFactory enemyFactory;
     private GameObject prefab;
-    private List<GameObject> enemys;
     private Random rand = new Random();
-    
+
     /// <summary>
     /// 初期化処理
     /// </summary>
     /// <param name="maxEnemyCount">Enemyの生成上限数</param>
-    /// <param name="pref">生成するEnemyのObject</param>
+    /// <param name="prefab">生成するEnemyのObject</param>
     /// <param name="enemyFactory">生成するEnemyのFactoryクラス</param>
     public void Init(int maxEnemyCount,GameObject prefab,EnemyFactory enemyFactory)
     {
         MaxEnemyCount = maxEnemyCount;
         this.enemyFactory = enemyFactory;
         this.prefab = prefab;
-        enemys = new List<GameObject>();
+        
         for (int i = 0; i < MaxEnemyCount; i++)
         {
+            Debug.Log($"EnemyCount{MaxEnemyCount}");
             GameObject obj = Instantiate(prefab);
             obj.transform.SetParent(gameObject.transform);
             
+            Debug.Log(enemyFactory);
             GameObject enemy = enemyFactory.Create(obj);
+            enemySubject.OnNext(enemy.GetComponent<Enemy>());
             obj.SetActive(false);
             enemys.Add(enemy);
         }
@@ -50,10 +62,9 @@ public class EnemySpawner : MonoBehaviour
         MaxEnemyCount += increaseNum;
         for (int i = 0; i < increaseNum; i++)
         {
-            GameObject obj = Instantiate(prefab);
-            obj.transform.SetParent(gameObject.transform);
-            
+            GameObject obj = Instantiate(prefab, gameObject.transform, true);
             GameObject enemy = enemyFactory.Create(obj);
+            enemySubject.OnNext(enemy.GetComponent<Enemy>());
             obj.SetActive(false);
             enemys.Add(enemy);
         }
@@ -96,7 +107,7 @@ public class EnemySpawner : MonoBehaviour
         {
             return;
         }
-        
+
         findObj.GetComponent<Transform>().position = spawnPos;
         findObj.GetComponent<Enemy>().Init();
     }
