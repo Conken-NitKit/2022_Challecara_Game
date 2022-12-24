@@ -7,11 +7,11 @@ using UnityEngine;
 /// </summary>
 public class OneLineStraightAttackComment : CommentsNature
 {
-    [SerializeField] GameObject oneLineStraightAttackCommentTextPrefab;
+    [SerializeField] GameObject oneLineStraightAttackComment_TextPrefab; 
     private GameObject playerPrefab;
-    [SerializeField] Rigidbody commentRigidbody;
+    [SerializeField] Rigidbody oneLineStraightAttackComment_Rigidbody;
 
     void Start(){
-        commentRigidbody.AddForce(transform.right * commentSpeed);
+        oneLineStraightAttackComment_Rigidbody.AddForce(transform.right * commentSpeed);
     }
 }

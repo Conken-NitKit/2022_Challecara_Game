@@ -7,12 +7,12 @@ using UnityEngine;
 /// </summary>
 public class HalfCircleAttackComment : CommentsNature
 {
-    public GameObject commentTextPrefab;
-    public GameObject playerObject;
-    public Comments commets;
+    [SerializeField] GameObject halfCircleAttackComment_TextPrefab;
+    private GameObject playerPrefab;
+    [SerializeField] Rigidbody halfCircleAttackComment_Rigidbody;
 
 
-    void FixedUpdate(){
-        
+    void Start(){
+        //commentRigidbody.AddForce(transform.right * commentSpeed);
     }
 }
