@@ -2308,10 +2308,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7060528684122246152}
   - component: {fileID: 6962768674764147000}
-  - component: {fileID: 6924162260930789492}
   - component: {fileID: 7234528695410331887}
   - component: {fileID: -6241785604521595156}
   - component: {fileID: -4320302247520021968}
+  - component: {fileID: 8758434834845037708}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2354,20 +2354,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &6924162260930789492
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7059319268379498000}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.3072609
-  m_Height: 1.882848
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.98, z: 0}
 --- !u!54 &7234528695410331887
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2398,6 +2384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMoveSpeed: 5
   playerRollSpeed: 120
+  _camera: {fileID: 0}
   anim: {fileID: 6962768674764147000}
   rigid: {fileID: 7234528695410331887}
   terrain: {fileID: 0}
@@ -2413,6 +2400,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0f1da8475f1482db47293823661e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &8758434834845037708
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059319268379498000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.9671932, z: 0.8425498}
+  m_Center: {x: 0, y: 0.9896862, z: -0.011246443}
 --- !u!1 &7059349458309941836
 GameObject:
   m_ObjectHideFlags: 0

@@ -5202,6 +5202,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -6241785604521595156, guid: 44e992b99e66b472f85d960a0b7767f5, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 1783006099}
+    - target: {fileID: -6241785604521595156, guid: 44e992b99e66b472f85d960a0b7767f5, type: 3}
       propertyPath: terrain
       value: 
       objectReference: {fileID: 1339426974}
@@ -5253,7 +5257,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7234528695410331887, guid: 44e992b99e66b472f85d960a0b7767f5, type: 3}
+      propertyPath: m_Constraints
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 7234528695410331887, guid: 44e992b99e66b472f85d960a0b7767f5, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8758434834845037708, guid: 44e992b99e66b472f85d960a0b7767f5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7234528695410331887, guid: 44e992b99e66b472f85d960a0b7767f5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 44e992b99e66b472f85d960a0b7767f5, type: 3}
 --- !u!114 &8758434834845037706 stripped
 MonoBehaviour:
