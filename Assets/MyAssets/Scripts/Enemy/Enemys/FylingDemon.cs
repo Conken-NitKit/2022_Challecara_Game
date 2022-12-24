@@ -14,24 +14,25 @@ public class FylingDemon : Enemy
     {
         Hp = Params.maxHp;
         gameObject.SetActive(true);
-        Debug.Log("復活！ At.Init");
     }
 
     public override void Attack()
     {
-        Debug.Log($"テスト！ At.Attack");
         attackRange.SetActive(true);
     }
     
     public override void AddedDamage(float damage)
     {
         Hp -= damage;
-        Debug.Log($"{damage}痛いよ！ At.AddedDamage");
+        
+        if (Hp < 0)
+        {
+            Dead();
+        }
     }
     
     public override void Dead()
     {
-        Debug.Log($"ぐえっ At.Dead");
         gameObject.SetActive(false);
     }
 }
