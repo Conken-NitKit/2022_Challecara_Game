@@ -26,7 +26,6 @@ public class Beholder : Enemy
     {
         Hp = Params.maxHp;
         gameObject.SetActive(true);
-        StartCoroutine(hoge());
     }
 
     public override void Attack()
@@ -51,14 +50,5 @@ public class Beholder : Enemy
         scoreManager.AddScore(1);
         await UniTask.Delay(TimeSpan.FromSeconds(seconds));
         gameObject.SetActive(false);
-    }
-
-    IEnumerator hoge()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(1);
-            AddedDamage(1);
-        }
     }
 }

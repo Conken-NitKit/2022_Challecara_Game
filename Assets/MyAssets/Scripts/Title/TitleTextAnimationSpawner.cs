@@ -12,19 +12,14 @@ public class TitleTextAnimationSpawner : MonoBehaviour
 
     [SerializeField]
     private float animationInterval = 5f;
-
-    [SerializeField]
-    private string canvasTagName = "Canvas";
-
+    
     IEnumerator Start()
     {
-        GameObject canvas = GameObject.FindWithTag(canvasTagName);
         while (true)
         {
-            var instance = Instantiate(textsAnimation);
-            instance.transform.SetParent(canvas.transform,false);
-
             yield return new WaitForSeconds(animationInterval);
+            var instance = Instantiate(textsAnimation, new Vector3( 0.0f, 0.0f, 0.0f), Quaternion.identity);
+            instance.transform.SetParent(gameObject.transform,false);
         }
     }
 }

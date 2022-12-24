@@ -9,7 +9,7 @@ using UniRx;
 /// </summary>
 public class PlayerStatus : MonoBehaviour
 {
-    private const float DefaultPlayerHp = 100.0f;
+    public const float DefaultPlayerHp = 100.0f;
     
     private float playerHp;
     

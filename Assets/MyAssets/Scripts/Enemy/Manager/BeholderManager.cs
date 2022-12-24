@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class BeholderManager : MonoBehaviour
 {
@@ -14,10 +15,20 @@ public class BeholderManager : MonoBehaviour
     
     private int increaseNum;
     
-    void Start()
+    public void Init()
     {
         _enemySpawner.Init(maxEnemyCount, _enemyPref, new BeholderFactory());
         _enemySpawner.StartSpawn(1f);
-        increaseNum = 2;
+        increaseNum = 1;
+        StartCoroutine(IncreaseEnemySpawn());
+    }
+
+    IEnumerator IncreaseEnemySpawn()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(60);
+            _enemySpawner.IncreaseMaxCount(increaseNum);
+        }
     }
 }

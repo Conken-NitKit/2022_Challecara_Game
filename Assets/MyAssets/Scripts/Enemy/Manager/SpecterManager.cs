@@ -14,10 +14,20 @@ public class SpecterManager : MonoBehaviour
     
     private int increaseNum;
     
-    void Start()
+    public void Init()
     {
-        _enemySpawner.Init(maxEnemyCount, _enemyPref,new SpecterFactory());
+        _enemySpawner.Init(maxEnemyCount, _enemyPref, new SpecterFactory());
         _enemySpawner.StartSpawn(1f);
-        increaseNum = 2;
+        increaseNum = 1;
+        StartCoroutine(IncreaseEnemySpawn());
+    }
+
+    IEnumerator IncreaseEnemySpawn()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(60);
+            _enemySpawner.IncreaseMaxCount(increaseNum);
+        }
     }
 }

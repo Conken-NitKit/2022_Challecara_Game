@@ -8,7 +8,7 @@ public class Title : MonoBehaviour
 {
     /// <summary>
     /// GameMenuをロードする関数
-    /// </summary>
+    /// </summary> 
     public void LoadGameMenu()
     { 
        SceneLoader.Load<GameMenu>("GameMenu");    

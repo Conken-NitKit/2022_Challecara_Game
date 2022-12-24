@@ -14,7 +14,7 @@ public class SceneTransitionAnimation : MonoBehaviour
         OpenScene();
     }
     
-    public void OpenScene()
+    private void OpenScene()
     {
         animationPanel.DOFade(0f, 0.5f).SetDelay(1);
     }
