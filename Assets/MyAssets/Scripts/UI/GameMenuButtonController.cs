@@ -17,14 +17,17 @@ public class GameMenuButtonController : BaseButtonController
             case "ButtonLevelHard":
                 battleLevel = BattleLevel.BattleLevels.Hard;
                 ChoiceBattleLevel(objectName);
+                Debug.Log(battleLevel);
                 break;
             case "ButtonLevelNormal":
                 battleLevel = BattleLevel.BattleLevels.Normal;
                 ChoiceBattleLevel(objectName);
+                Debug.Log(battleLevel);
                 break;
             case "ButtonLevelEasy":
-                battleLevel = BattleLevel.BattleLevels.Hard;
+                battleLevel = BattleLevel.BattleLevels.Easy;
                 ChoiceBattleLevel(objectName);
+                Debug.Log(battleLevel);
                 break;
             case "ButtonGameStart":
                 ChoiceGameStart();

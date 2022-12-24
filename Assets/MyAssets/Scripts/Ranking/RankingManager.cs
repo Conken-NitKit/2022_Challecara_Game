@@ -30,17 +30,18 @@ public class RankingManager : MonoBehaviour
     {
         string rankingName = null;
         switch(battleLevel)
-            {
-                case BattleLevel.BattleLevels.Easy:
-                    rankingName = "Easy";
-                    break;
-                case BattleLevel.BattleLevels.Normal:
-                    rankingName = "Normal";
-                    break;
-                case BattleLevel.BattleLevels.Hard:
-                    rankingName = "Hard";
-                    break;
-            }
+        {
+            case BattleLevel.BattleLevels.Easy:
+                rankingName = "Easy";
+                break;
+            case BattleLevel.BattleLevels.Normal:
+                rankingName = "Normal";
+                break;
+            case BattleLevel.BattleLevels.Hard:
+                rankingName = "Hard";
+                break;
+        }
+        Debug.Log(rankingName);
         // 送信したい更新情報
         var statisticUpdate = new StatisticUpdate
         {
