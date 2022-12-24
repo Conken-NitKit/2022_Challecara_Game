@@ -25,13 +25,15 @@ public class TitleLogoMove : MonoBehaviour
     [SerializeField] private AudioClip meteoBGM;
     [SerializeField] private SceneTransitionAnimation transitionAnimation;
     [SerializeField] private Title title;
+    [SerializeField] private GameObject tapButton;
     private float seconds = 1f;
     private float Shakepower = 50;//揺れの強さ
     private int Frequency = 50;//振動数
     private float Camerashake = 50;//手ブレ
 
-    public void OnClicked() 
+    public void OnClicked()
     {
+        tapButton.SetActive(false);
         var sequence = DOTween.Sequence()
             .Append(meteo.rectTransform.DOLocalMove(new Vector3(Posx, Posy, 0f), Tweentime).SetEase(Ease.InCubic))
             .Join(meteo.rectTransform.DOScale(Vector3.one * Scaletimes, Tweentime).SetEase(Ease.InQuint))

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MyScript.Scene;
 
 public class FylingDemonManager : MonoBehaviour
 {
@@ -12,13 +13,16 @@ public class FylingDemonManager : MonoBehaviour
     [SerializeField]
     private int maxEnemyCount;
     
+    [SerializeField] 
+    private Main main;
+    
     private int increaseNum;
     
     public void Init()
     {
         _enemySpawner.Init(maxEnemyCount, _enemyPref, new FylingDemonFactory());
         _enemySpawner.StartSpawn(1f);
-        increaseNum = 1;
+        increaseNum = (int)main.battleLevel;
         StartCoroutine(IncreaseEnemySpawn());
     }
 
