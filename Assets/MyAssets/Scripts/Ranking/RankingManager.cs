@@ -6,13 +6,7 @@ using UnityEngine;
 
 public class RankingManager : MonoBehaviour
 {
-    public enum BattleLevel
-    {
-        Easy,
-        Normal,
-        Hard
-    }
-    BattleLevel battleLevel = BattleLevel.Hard;
+    BattleLevel.BattleLevels battleLevel = BattleLevel.BattleLevels.Hard;
 
     public void UserLogin(string usename,int score)
     {
@@ -36,13 +30,13 @@ public class RankingManager : MonoBehaviour
         string rankingName = null;
         switch(battleLevel)
             {
-                case BattleLevel.Easy:
+                case BattleLevel.BattleLevels.Easy:
                     rankingName = "Easy";
                     break;
-                case BattleLevel.Normal:
+                case BattleLevel.BattleLevels.Normal:
                     rankingName = "Normal";
                     break;
-                case BattleLevel.Hard:
+                case BattleLevel.BattleLevels.Hard:
                     rankingName = "Hard";
                     break;
             }

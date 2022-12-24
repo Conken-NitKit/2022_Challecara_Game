@@ -2,25 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using UnityEngine.UI;
 
 public class Main : MonoBehaviour
 {
-    int killcount;
-    double timesurvived;
+    [SerializeField] private Text playerName;
 
-    public void SetArguments(string liveURL,string battleLevel)
+    public void SetArguments(string liveURL,string battleLevel, string playerName)
     {
-        Debug.Log("ok");
+        this.playerName.text = playerName;
     }
     
-    public async Task PassMaintoResult()
+    public async Task PassMainToResult(int killCount,double timeSurvived)
     {
         var result = await SceneLoader.Load<Result>("Result");
-        result.SetArguments(killcount,timesurvived);
-    }
-
-    public void Loadresult()
-    {
-        PassMaintoResult();
+        result.SetArguments(killCount, timeSurvived, playerName.text);
     }
 }

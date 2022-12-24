@@ -9,8 +9,6 @@ public class Result : MonoBehaviour
 
     private int totalScore;
 
-    private string playerName = "林";
-
     [SerializeField]
     private Text numberKillText;
     [SerializeField]
@@ -19,9 +17,8 @@ public class Result : MonoBehaviour
     [SerializeField]
     private Text totalScoreText;
 
-    public void SetArguments(int numberKill, double timeSurvived)
+    public void SetArguments(int numberKill, double timeSurvived, string playerName)
     {
-        
         numberKillText.text = $"{numberKill:000}";
         timeSurvivedText.text = $"{(int)(timeSurvived/60):00}:{(int)(timeSurvived%60):00}";
         totalScore = (int)(numberKill * timeSurvived);
@@ -37,7 +34,6 @@ public class Result : MonoBehaviour
     }
     public void LoadGameMenu()
     {
-        Debug.Log("hoge");
         SceneLoader.Load<GameMenu>("GameMenu");
     }
 }

@@ -6,6 +6,8 @@ public class GameMenuButtonController : BaseButtonController
 {
     [SerializeField] private MenuFlowManager menuFlowManager;
 
+    public string ButtonName { get; private set; }
+
     protected override void OnButtonClick(string objectName)
     {
         switch (objectName)
@@ -37,6 +39,7 @@ public class GameMenuButtonController : BaseButtonController
     private void ChoiceBattleLevel(string buttonName)
     {
         Debug.Log($"{buttonName}");
+        ButtonName = buttonName;
         menuFlowManager.ProceedUserDataInput();
     }
 

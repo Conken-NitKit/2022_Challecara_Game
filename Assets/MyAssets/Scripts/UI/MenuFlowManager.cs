@@ -13,34 +13,34 @@ public class MenuFlowManager : MonoBehaviour
     [SerializeField] private Text idWarningText;
 
     [SerializeField] private UserDataChecker userDataChecker;
-    //[SerializeField] private 
+    [SerializeField] private GameMenu gameMenu;
 
     public void ProceedLevelChoice()
     {
-        menuPanel.SetActive(false);
-        levelPanel.SetActive(true);
+        if(menuPanel != null)menuPanel.SetActive(false);
+        if(levelPanel != null)levelPanel.SetActive(true);
     }
 
     public void ProceedUserDataInput()
     {
-        levelPanel.SetActive(false);
-        userDataPanel.SetActive(true);
+        if(levelPanel != null)levelPanel.SetActive(true);
+        if(userDataPanel != null)userDataPanel.SetActive(true);
     }
     public void ProceedMainGame()
     {
+
         if (userDataChecker.IsAvailableUserName())
         {
             nameWarningText.text = "有効な名前が入力されていません！";
             return;
         }
-
         if (userDataChecker.IsAvailableChatId())
         {
             idWarningText.text = "有効なチャットIdが入力されていません！";
             return;
         }
-        Debug.Log("いけます！多分");
-        // ここにシーンロード処理
+
+        gameMenu.PassGameMenutoMain();
     }
     
 }
