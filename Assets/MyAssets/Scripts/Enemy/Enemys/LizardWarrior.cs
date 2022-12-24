@@ -13,6 +13,7 @@ public class LizardWarrior : Enemy
     public override void Init()
     {
         Hp = Params.maxHp;
+        Debug.Log("LizardWarrior");
         gameObject.SetActive(true);
     }
 

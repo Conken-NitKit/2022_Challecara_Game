@@ -17,4 +17,6 @@ public class ScoreManager : MonoBehaviour
             enemy.OnAddScore.Subscribe(addScore => score.Value += addScore);
         });
     }
+    
+    
 }

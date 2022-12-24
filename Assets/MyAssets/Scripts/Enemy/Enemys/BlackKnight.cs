@@ -13,6 +13,7 @@ public class BlackKnight : Enemy
     public override void Init()
     {
         Hp = Params.maxHp;
+        Debug.Log("BlackKnight");
         gameObject.SetActive(true);
     }
 

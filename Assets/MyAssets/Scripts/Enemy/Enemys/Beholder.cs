@@ -13,6 +13,7 @@ public class Beholder : Enemy
     public override void Init()
     {
         Hp = Params.maxHp;
+        Debug.Log("Beholder");
         gameObject.SetActive(true);
     }
 

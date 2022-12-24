@@ -13,6 +13,7 @@ public class FylingDemon : Enemy
     public override void Init()
     {
         Hp = Params.maxHp;
+        Debug.Log("FylingDemon");
         gameObject.SetActive(true);
     }
 

@@ -13,6 +13,7 @@ public class Specter : Enemy
     public override void Init()
     {
         Hp = Params.maxHp;
+        Debug.Log("Specter");
         gameObject.SetActive(true);
     }
 
