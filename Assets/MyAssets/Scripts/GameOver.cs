@@ -6,6 +6,7 @@ using UnityEngine;
 using UniRx;
 using DG.Tweening;
 using UnityEngine.UI;
+using MyScript.Scene;
 
 public class GameOver : MonoBehaviour
 {

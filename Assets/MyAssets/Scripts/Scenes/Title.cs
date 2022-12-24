@@ -4,13 +4,16 @@ using UnityEngine;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-public class Title : MonoBehaviour
+namespace MyScript.Scene
 {
-    /// <summary>
-    /// GameMenuをロードする関数
-    /// </summary> 
-    public void LoadGameMenu()
-    { 
-       SceneLoader.Load<GameMenu>("GameMenu");    
+    public class Title : MonoBehaviour
+    {
+        /// <summary>
+        /// GameMenuをロードする関数
+        /// </summary> 
+        public void LoadGameMenu()
+        {
+            SceneLoader.Load<GameMenu>("GameMenu");
+        }
     }
 }
