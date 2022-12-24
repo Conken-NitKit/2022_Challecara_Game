@@ -43,7 +43,6 @@ public class TestEnemy : Enemy
     {
         while (true)
         {
-            
             AddedDamage(3f);
             yield return new WaitForSeconds(1f);
             if (Hp <= 0)

@@ -719,6 +719,7 @@ MonoBehaviour:
   agent: {fileID: -6770985677220988514}
   animator: {fileID: 7512065305912847107}
   enemy: {fileID: -8995236840306234262}
+  enemyName: LizardWarrior
 --- !u!136 &5413670942792173991
 CapsuleCollider:
   m_ObjectHideFlags: 0

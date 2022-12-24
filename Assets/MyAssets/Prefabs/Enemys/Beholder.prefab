@@ -1571,6 +1571,7 @@ MonoBehaviour:
   agent: {fileID: -7015110725795387850}
   animator: {fileID: 4530003305994672282}
   enemy: {fileID: -2740690280838540816}
+  enemyName: Beholder
 --- !u!136 &4521719738374553680
 CapsuleCollider:
   m_ObjectHideFlags: 0

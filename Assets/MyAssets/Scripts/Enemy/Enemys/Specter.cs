@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using System;
 
 public class Specter : Enemy
 {
@@ -10,28 +12,40 @@ public class Specter : Enemy
     [SerializeField]
     private GameObject attackRange;
     
+    private ScoreManager scoreManager;
+    
+    private float seconds = 0.3f;
+
+    private void Start()
+    {
+        scoreManager = GameObject.FindWithTag("Manager").GetComponent<ScoreManager>();
+    }
+
     public override void Init()
     {
         Hp = Params.maxHp;
         gameObject.SetActive(true);
-        Debug.Log("復活！ At.Init");
     }
 
     public override void Attack()
     {
-        Debug.Log($"テスト！ At.Attack");
         attackRange.SetActive(true);
     }
     
     public override void AddedDamage(float damage)
     {
         Hp -= damage;
-        Debug.Log($"{damage}痛いよ！ At.AddedDamage");
+
+        if (Hp < 0)
+        {
+            Dead();
+        }
     }
     
-    public override void Dead()
+    public override async void Dead()
     {
-        Debug.Log($"ぐえっ At.Dead");
+        scoreManager.AddScore(1);
+        await UniTask.Delay(TimeSpan.FromSeconds(seconds));
         gameObject.SetActive(false);
     }
 }

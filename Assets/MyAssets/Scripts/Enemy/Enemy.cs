@@ -10,7 +10,7 @@ public abstract class Enemy : MonoBehaviour
     public IObservable<int> OnAddScore
     {
         get { return addScore; }
-    } 
+    }
     
     /// <summary>
     /// Enemyの攻撃処理

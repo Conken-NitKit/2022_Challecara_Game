@@ -601,6 +601,7 @@ MonoBehaviour:
   agent: {fileID: -3535299237564773944}
   animator: {fileID: 8548725443824041179}
   enemy: {fileID: -8695012779676174092}
+  enemyName: Specter
 --- !u!136 &3706577444306178448
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -27,11 +27,5 @@ public class TestScript : MonoBehaviour
             _testSpawner.IncreaseMaxCount(increaseNum);
             time = 10;
         }
-        _scoreManager.Score
-            .Subscribe(x =>
-            {
-                Debug.Log(x);
-            }).AddTo(this);
-        ;
     }
 }

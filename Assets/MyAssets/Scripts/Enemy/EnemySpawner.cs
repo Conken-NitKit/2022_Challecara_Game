@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
     private EnemyFactory enemyFactory;
     private GameObject prefab;
     private Random rand = new Random();
-    
+
     /// <summary>
     /// 初期化処理
     /// </summary>
@@ -36,11 +36,14 @@ public class EnemySpawner : MonoBehaviour
         MaxEnemyCount = maxEnemyCount;
         this.enemyFactory = enemyFactory;
         this.prefab = prefab;
+        
         for (int i = 0; i < MaxEnemyCount; i++)
         {
+            Debug.Log($"EnemyCount{MaxEnemyCount}");
             GameObject obj = Instantiate(prefab);
             obj.transform.SetParent(gameObject.transform);
             
+            Debug.Log(enemyFactory);
             GameObject enemy = enemyFactory.Create(obj);
             enemySubject.OnNext(enemy.GetComponent<Enemy>());
             obj.SetActive(false);
@@ -104,7 +107,7 @@ public class EnemySpawner : MonoBehaviour
         {
             return;
         }
-        
+
         findObj.GetComponent<Transform>().position = spawnPos;
         findObj.GetComponent<Enemy>().Init();
     }

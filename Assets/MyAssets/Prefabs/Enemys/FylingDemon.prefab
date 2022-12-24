@@ -2262,6 +2262,7 @@ MonoBehaviour:
   agent: {fileID: -3714960077399218805}
   animator: {fileID: 3891923349461803650}
   enemy: {fileID: 4654353800300679539}
+  enemyName: FylingDemon
 --- !u!136 &6799893897270973632
 CapsuleCollider:
   m_ObjectHideFlags: 0

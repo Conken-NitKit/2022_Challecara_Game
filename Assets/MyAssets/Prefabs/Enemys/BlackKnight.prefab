@@ -1775,6 +1775,7 @@ MonoBehaviour:
   agent: {fileID: -3687444413792175945}
   animator: {fileID: 1802286859456520337}
   enemy: {fileID: -5572009525544430763}
+  enemyName: BlackKnight
 --- !u!136 &7781405160374145098
 CapsuleCollider:
   m_ObjectHideFlags: 0
