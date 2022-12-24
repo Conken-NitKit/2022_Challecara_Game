@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class TestEnemy : Enemy
 {
-    private static EnemyParams param = null;
-    private static EnemyParams Params => param ?? (param = Resources.Load<EnemyParams>("EnemyDatas/test"));
+    private static EnemyParams param;
+    private new static EnemyParams Params => param ?? (param = Resources.Load<EnemyParams>("EnemyDatas/test"));
 
     public override void Init()
     {
@@ -30,6 +30,7 @@ public class TestEnemy : Enemy
     {
         Debug.Log($"ぐえっ At.Dead");
         gameObject.SetActive(false);
+        AddScore(param.score);
     }
     
     
@@ -42,7 +43,6 @@ public class TestEnemy : Enemy
     {
         while (true)
         {
-            
             AddedDamage(3f);
             yield return new WaitForSeconds(1f);
             if (Hp <= 0)

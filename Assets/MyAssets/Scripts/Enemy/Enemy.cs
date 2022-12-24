@@ -1,14 +1,18 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using UniRx;
 
 public abstract class Enemy : MonoBehaviour
 {
     protected static EnemyParams Params;
     protected float Hp;
-
+    private Subject<int> addScore = new Subject<int>(); 
+    public IObservable<int> OnAddScore
+    {
+        get { return addScore; }
+    }
+    
     /// <summary>
     /// Enemyの攻撃処理
     /// </summary>
@@ -18,6 +22,7 @@ public abstract class Enemy : MonoBehaviour
     /// </summary>
     /// <param name="damege">受けるダメージ</param>
     public abstract void AddedDamage(float damege);
+
     /// <summary>
     /// Enemyの死亡処理
     /// </summary>
@@ -26,4 +31,12 @@ public abstract class Enemy : MonoBehaviour
     /// Enemy初期化処理
     /// </summary>
     public abstract void Init();
+    /// <summary>
+    /// スコアを増加する処理
+    /// </summary>
+
+    protected void AddScore(int score)
+    {
+        addScore.OnNext(score);
+    }
 }
