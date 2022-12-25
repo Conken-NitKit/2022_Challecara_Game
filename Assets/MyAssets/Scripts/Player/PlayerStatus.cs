@@ -15,7 +15,7 @@ public class PlayerStatus : MonoBehaviour
     
     private const float DefaultPlayerAtk = 1.0f;
 
-    private float nowPlayerAtk;
+    public float nowPlayerAtk { get; private set; }
 
     private bool runDoubleAtk;
 

@@ -35,10 +35,9 @@ public class Beholder : Enemy
     
     public override void AddedDamage(float damage)
     {
-        Hp -= damage;
-        
         Debug.Log(Hp);
-        
+        Hp -= damage;
+
         if (Hp < 0)
         {
             Dead();

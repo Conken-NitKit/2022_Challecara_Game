@@ -30,9 +30,9 @@ namespace MyScript.Scene
             PassGameMenutoMain();
         }
 
-        public void LoadResult()
+        public void LoadRanking()
         {
-            SceneLoader.Load<Result>("Result");
+            SceneLoader.Load<Ranking>("Ranking");
         }
     }
 }
