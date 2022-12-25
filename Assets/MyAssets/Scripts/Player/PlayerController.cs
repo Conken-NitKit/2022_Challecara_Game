@@ -29,67 +29,37 @@ public class PlayerController : MonoBehaviour
     private bool isGround = false;
 
     bool isTouch = false;
+    
+    [SerializeField]
+    private Transform _camera;
+    
+    private static readonly int IS_MOVE_HASH = Animator.StringToHash("Walk");
 
     [SerializeField] Animator anim;
     [SerializeField] Rigidbody rigid;
 
     [SerializeField] private Terrain terrain;
+ 
 
     void Update()
     {
-        if (Input.anyKey)
+        moveVector = Vector3.zero;
+
+        bool isKeyInput = ( Input.GetAxis( "Horizontal" ) != 0 || Input.GetAxis( "Vertical" ) != 0 || TouchInput != Vector2.zero );
+        
+        if (isKeyInput)
         {
-            anim.SetBool ( "Walk", true );
+            anim.SetBool ( IS_MOVE_HASH, true );
         }
         else
         {
-            anim.SetBool ( "Walk", false );
+            anim.SetBool ( IS_MOVE_HASH, false );
         }
 
-        if( Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer )
-        {
-            Touch[] touches;
-
-            if(Input.touchCount > 0)
-            {
-                Touch touch = Input.GetTouch(0);
-                isTouch = true;
-                touches = Input.touches;
-                
-                if(isTouch = true)
-                {
-                    if (touch.phase == TouchPhase.Began)
-                    {
-                        StartTouch = touch.position;
-                        Vector3 touchPosition = touch.position;
-                        touchPosition.z = 1f;
-                    }
-                        
-                    else if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
-                    {      
-                        Vector2 position = touch.position;
-                        TouchInput = position - StartTouch;
-                    }
-                    else if (touch.phase == TouchPhase.Ended)
-                    {
-                        TouchInput = Vector2.zero;
-                    }
-                }
-            }
-            else
-            {
-                isTouch = false;
-            }
-        }
-        
-        moveVector = Vector3.zero;
- 
-        moveVector += transform.forward * Input.GetAxis( "Vertical" );
-        moveVector += transform.right * Input.GetAxis( "Horizontal" );
-
-        bool isKeyInput = ( Input.GetAxis( "Horizontal" ) != 0 || Input.GetAxis( "Vertical" ) != 0 || TouchInput != Vector2.zero );
         if( isKeyInput )
         {
+            moveVector += transform.forward * Input.GetAxis( "Vertical" );
+            moveVector += transform.right * Input.GetAxis( "Horizontal" );
             Vector3 moveDelta;
             moveDelta = moveVector * Time.deltaTime * playerMoveSpeed;
 
@@ -103,32 +73,10 @@ public class PlayerController : MonoBehaviour
             latestPos = transform.position;
             
             Quaternion lookRotation = Quaternion.LookRotation(
-                new Vector3(moveVector.x, 0f, moveVector.z));
+                moveVector);
             transform.rotation = Quaternion.RotateTowards(
                 transform.rotation,
                 lookRotation, Time.deltaTime * playerRollSpeed);
         }
     }
-
-    /*void FixedUpdate()
-    {
-        Vector3 input = new Vector3();
-        Vector3 move = new Vector3();
-        if( Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer )
-        {
-            input = new Vector3( TouchInput.x, 0, TouchInput.y );
-            move = input.normalized * 2f;
-        }
-        else
-        {
-            input = new Vector3( horizontalKeyInput, 0, verticalKeyInput );
-            move = input.normalized * 2f;
-        }
-        Vector3 cameraMove = Camera.main.gameObject.transform.rotation * move;
-        cameraMove.y = 0;
-        Vector3 currentRigidVelocity = rigid.velocity;
-        currentRigidVelocity.y = 0;
- 
-        rigid.AddForce( cameraMove - rigid.velocity, ForceMode.VelocityChange );
-    }*/
 }
