@@ -10,7 +10,7 @@ public class OneLineStraightAttackComment : CommentsNature
 {
     [SerializeField] private TextMesh oneLineStraightAttackComment_Text;
     [SerializeField] private Rigidbody oneLineStraightAttackComment_Rigidbody;
-    public string Text { get; set; }
+    //public string Text { get; set; }
 
 
     public void Start()
