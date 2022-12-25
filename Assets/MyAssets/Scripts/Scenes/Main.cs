@@ -12,10 +12,13 @@ namespace MyScript.Scene
 
         public BattleLevel.BattleLevels battleLevel { get; private set; }
 
+        [SerializeField] private YoutubeComment youtube;
+
         public void SetArguments(string liveURL, BattleLevel.BattleLevels battleLevel, string playerName)
         {
             this.playerName.text = playerName;
             this.battleLevel = battleLevel;
+            youtube.VideoID = liveURL;
         }
 
         public async Task PassMainToResult(int killCount, double timeSurvived)

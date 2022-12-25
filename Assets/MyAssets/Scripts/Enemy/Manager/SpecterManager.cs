@@ -30,7 +30,7 @@ public class SpecterManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(60);
+            yield return new WaitForSeconds(30);
             _enemySpawner.IncreaseMaxCount(increaseNum);
         }
     }

@@ -39,7 +39,7 @@ public class YoutubeComment : MonoBehaviour
 {
     [SerializeField] private string APIKEY;
 
-    private string VideoID;
+    public string VideoID { get; set; }
 
     [SerializeField]
     float GetCommentInterval = 3f;

@@ -24,6 +24,7 @@ public class Comments : MonoBehaviour
     /// </summary>
     public void OnComment(List<Comment> comments)
     {
+        Debug.Log("hage");
         if(comments.Count > 1){
             //CommentList内のコメントを最新のもの以外は削除する
             comments.RemoveRange(0, comments.Count -1);
