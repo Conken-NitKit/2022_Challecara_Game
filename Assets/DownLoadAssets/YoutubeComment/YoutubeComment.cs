@@ -38,7 +38,7 @@ public class Comment
 public class YoutubeComment : MonoBehaviour
 {
     [SerializeField] private string APIKEY;
-    
+
     public string VideoID { get; set; }
 
     [SerializeField]
@@ -60,7 +60,6 @@ public class YoutubeComment : MonoBehaviour
     {
         if(this.playOnAwake)
         {
-            TryGetChatId(VideoID);
             BeginGetComments();
         }
     }
@@ -81,7 +80,6 @@ public class YoutubeComment : MonoBehaviour
 
     IEnumerator BeginGetCommentSimple()
     {
-        TryGetChatId(VideoID);
         if(string.IsNullOrEmpty(this.APIKEY))
         {
             Debug.LogError("Please Input APIKEY");
@@ -109,13 +107,11 @@ public class YoutubeComment : MonoBehaviour
     {
         var url = $"https://www.googleapis.com/youtube/v3/videos?id={videoId}&key={this.APIKEY}&part=liveStreamingDetails";
 
-       
         using (var req = UnityWebRequest.Get(url))
         {
             yield return req.SendWebRequest();
             var json = SimpleJSON.JSON.Parse(req.downloadHandler.text);
             this.chatID = json["items"][0]["liveStreamingDetails"]["activeLiveChatId"].ToString();
-            Debug.Log($"CAhat{chatID}");
              if (string.IsNullOrEmpty(this.chatID))
             {
                 Debug.LogError("activeLiveChatId not found.");
