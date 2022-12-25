@@ -62,7 +62,7 @@ public class GenerateComments : MonoBehaviour
         Transform playerTransform = playerObjectPrefab.transform;
         Vector3 playerPos = playerTransform.position;
 
-        if(commentLength == 5){
+        /*if(commentLength == 5){
 
             //5文字に分岐　(30 60 90 120 150)
 
@@ -88,13 +88,11 @@ public class GenerateComments : MonoBehaviour
             //Debug.Log(commentLength + "　→1列");
             //oneLineStraightAttackComment.Start();
 
-            //コメントの３DオブジェクトのプレハブにあるTextMeshに入力されたコメントを代入したもののインスタンス化
-            //oneLineStraightAttackComment_TextPrefab.GetComponent<TextMesh>().text = commentReplaceAfter; 
-            oneLineStraightAttackComment.Text = commentReplaceAfter; 
+            //コメントの３DオブジェクトのプレハブにあるTextMeshに入力されたコメントを代入したもののインスタンス化*/
+            oneLineStraightAttackComment_TextPrefab.GetComponent<TextMesh>().text = commentReplaceAfter; 
+            //oneLineStraightAttackComment.Text = commentReplaceAfter; 
             GameObject newTextObj = Instantiate(oneLineStraightAttackComment_TextPrefab, new Vector3(playerPos.x, playerPos.y, playerPos.z), Quaternion.Euler(90, playerTransform.eulerAngles.y, 90)); //インスタンス化
-
-        }
-       
+            
 
         yield return new WaitForSeconds(0.1f);
         commentList.Remove(commentReplaceAfter);

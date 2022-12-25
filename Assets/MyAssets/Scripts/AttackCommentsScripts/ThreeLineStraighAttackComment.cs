@@ -24,10 +24,11 @@ public class ThreeLineStraighAttackComment : CommentsNature
 
     private void ConvertTextThreeLine()
     {
-        string[] textParts = new string[3];
-        textParts[0] = Text.Substring(0,Text.Length/3 -1);
-        textParts[1] = Text.Substring(Text.Length/3, 2*Text.Length/3 -1);
-        textParts[1] = Text.Substring(2*Text.Length/3 );
+        string[] textParts = new string[3]; 
+        Debug.Log($"{Text}");
+        textParts[0] = Text.Substring(0,Text.Length/3 );
+        textParts[1] = Text.Substring(Text.Length/3, Text.Length/3);
+        textParts[2] = Text.Substring(2*Text.Length/3 );
         for (int i = 0; i < 3; i++)
         {
             threeLineStraighAttackComment_Text[i].text = textParts[i];

@@ -15,7 +15,6 @@ public class OneLineStraightAttackComment : CommentsNature
 
     public void Start()
     {
-        oneLineStraightAttackComment_Text.text = Text;
         oneLineStraightAttackComment_Rigidbody.AddForce(transform.right * commentSpeed);
         //Debug.Log("1列に直行");
     }
