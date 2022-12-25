@@ -1182,6 +1182,7 @@ MonoBehaviour:
   _enemySpawner: {fileID: 360275417}
   _enemyPref: {fileID: 8925892822458641477, guid: 0d03aee557339401b81ce473378cb775, type: 3}
   maxEnemyCount: 0
+  main: {fileID: 1385871764}
 --- !u!114 &360275417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1816,6 +1817,7 @@ MonoBehaviour:
   _enemySpawner: {fileID: 712162453}
   _enemyPref: {fileID: 7512065305920264353, guid: 63175a10b5efc46e8a753ec0590ff03e, type: 3}
   maxEnemyCount: -1
+  main: {fileID: 1385871764}
 --- !u!114 &712162453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2454,6 +2456,7 @@ MonoBehaviour:
   _enemySpawner: {fileID: 871256797}
   _enemyPref: {fileID: 3891923349452443982, guid: 226aa9c68efbc40a187df1379d393f69, type: 3}
   maxEnemyCount: -2
+  main: {fileID: 1385871764}
 --- !u!114 &871256797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3457,6 +3460,7 @@ MonoBehaviour:
   _enemySpawner: {fileID: 1329426387}
   _enemyPref: {fileID: 4530003306004163418, guid: 630d14cdf46e74b1985e4f9400573ce3, type: 3}
   maxEnemyCount: 2
+  main: {fileID: 1385871764}
 --- !u!114 &1329426387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3588,6 +3592,7 @@ GameObject:
   - component: {fileID: 1385871761}
   - component: {fileID: 1385871762}
   - component: {fileID: 1385871763}
+  - component: {fileID: 1385871764}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Manager
@@ -3689,6 +3694,20 @@ MonoBehaviour:
   Posy: -400
   scoreManager: {fileID: 1385871761}
   timer: {fileID: 1385871760}
+  main: {fileID: 1385871764}
+--- !u!114 &1385871764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385871758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083575ebbaa4c4eb799671716718ac83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerName: {fileID: 330296156}
 --- !u!1 &1402215962
 GameObject:
   m_ObjectHideFlags: 0
@@ -3722,6 +3741,7 @@ MonoBehaviour:
   _enemySpawner: {fileID: 1402215964}
   _enemyPref: {fileID: 1802286859466036053, guid: e103fa41e2eff4540b2de9e434189a87, type: 3}
   maxEnemyCount: -4
+  main: {fileID: 1385871764}
 --- !u!114 &1402215964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4934,6 +4954,7 @@ MonoBehaviour:
   _enemySpawner: {fileID: 2063996699}
   _enemyPref: {fileID: 8548725443831320241, guid: e9a268b094f914c9095e4fdf7a401cbb, type: 3}
   maxEnemyCount: 1
+  main: {fileID: 1385871764}
 --- !u!114 &2063996699
 MonoBehaviour:
   m_ObjectHideFlags: 0

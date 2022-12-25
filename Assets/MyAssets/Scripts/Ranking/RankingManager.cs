@@ -6,16 +6,11 @@ using UnityEngine;
 
 public class RankingManager : MonoBehaviour
 {
-    public enum BattleLevel
-    {
-        Easy,
-        Normal,
-        Hard
-    }
-    BattleLevel battleLevel = BattleLevel.Hard;
+    BattleLevel.BattleLevels battleLevel;
 
-    public void UserLogin(string usename,int score)
+    public void UserLogin(string usename,int score, BattleLevel.BattleLevels battleLevel)
     {
+        this.battleLevel = battleLevel;
         PlayFabClientAPI.LoginWithCustomID
         (
             new LoginWithCustomIDRequest {CustomId = usename, CreateAccount = true},
@@ -35,17 +30,18 @@ public class RankingManager : MonoBehaviour
     {
         string rankingName = null;
         switch(battleLevel)
-            {
-                case BattleLevel.Easy:
-                    rankingName = "Easy";
-                    break;
-                case BattleLevel.Normal:
-                    rankingName = "Normal";
-                    break;
-                case BattleLevel.Hard:
-                    rankingName = "Hard";
-                    break;
-            }
+        {
+            case BattleLevel.BattleLevels.Easy:
+                rankingName = "Easy";
+                break;
+            case BattleLevel.BattleLevels.Normal:
+                rankingName = "Normal";
+                break;
+            case BattleLevel.BattleLevels.Hard:
+                rankingName = "Hard";
+                break;
+        }
+        Debug.Log(rankingName);
         // 送信したい更新情報
         var statisticUpdate = new StatisticUpdate
         {

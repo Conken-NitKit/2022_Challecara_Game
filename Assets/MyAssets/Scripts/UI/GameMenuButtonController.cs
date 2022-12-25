@@ -6,14 +6,28 @@ public class GameMenuButtonController : BaseButtonController
 {
     [SerializeField] private MenuFlowManager menuFlowManager;
 
+    public string ButtonName { get; private set; }
+
+    public BattleLevel.BattleLevels battleLevel{ get; private set; }
+
     protected override void OnButtonClick(string objectName)
     {
         switch (objectName)
         {
             case "ButtonLevelHard":
-            case "ButtonLevelNormal":
-            case "ButtonLevelEasy":
+                battleLevel = BattleLevel.BattleLevels.Hard;
                 ChoiceBattleLevel(objectName);
+                Debug.Log(battleLevel);
+                break;
+            case "ButtonLevelNormal":
+                battleLevel = BattleLevel.BattleLevels.Normal;
+                ChoiceBattleLevel(objectName);
+                Debug.Log(battleLevel);
+                break;
+            case "ButtonLevelEasy":
+                battleLevel = BattleLevel.BattleLevels.Easy;
+                ChoiceBattleLevel(objectName);
+                Debug.Log(battleLevel);
                 break;
             case "ButtonGameStart":
                 ChoiceGameStart();
@@ -37,6 +51,7 @@ public class GameMenuButtonController : BaseButtonController
     private void ChoiceBattleLevel(string buttonName)
     {
         Debug.Log($"{buttonName}");
+        ButtonName = buttonName;
         menuFlowManager.ProceedUserDataInput();
     }
 
