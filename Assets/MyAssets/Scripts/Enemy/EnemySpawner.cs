@@ -39,11 +39,9 @@ public class EnemySpawner : MonoBehaviour
         
         for (int i = 0; i < MaxEnemyCount; i++)
         {
-            Debug.Log($"EnemyCount{MaxEnemyCount}");
             GameObject obj = Instantiate(prefab);
             obj.transform.SetParent(gameObject.transform);
-            
-            Debug.Log(enemyFactory);
+
             GameObject enemy = enemyFactory.Create(obj);
             enemySubject.OnNext(enemy.GetComponent<Enemy>());
             obj.SetActive(false);

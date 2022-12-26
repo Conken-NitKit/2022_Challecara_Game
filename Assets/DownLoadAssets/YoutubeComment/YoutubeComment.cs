@@ -60,6 +60,7 @@ public class YoutubeComment : MonoBehaviour
     {
         if(this.playOnAwake)
         {
+            TryGetChatId(VideoID);
             BeginGetComments();
         }
     }
@@ -92,7 +93,8 @@ public class YoutubeComment : MonoBehaviour
             yield break;
         }
 
-        if (IsAvailableId)
+        Debug.Log($"TryGetChatId is {TryGetChatId(VideoID)}");
+        if (true)
         {
             yield return GetComments();
         }
@@ -106,7 +108,7 @@ public class YoutubeComment : MonoBehaviour
     IEnumerator GetChatID(string videoId)
     {
         var url = $"https://www.googleapis.com/youtube/v3/videos?id={videoId}&key={this.APIKEY}&part=liveStreamingDetails";
-
+        
         using (var req = UnityWebRequest.Get(url))
         {
             yield return req.SendWebRequest();
@@ -121,7 +123,7 @@ public class YoutubeComment : MonoBehaviour
         }
         this.chatID = chatID.Replace("\"", "");
         IsAvailableId = true;
-        Debug.Log("ChatID=" + this.chatID);
+        StartCoroutine(GetComments());
     }
 
     

@@ -91,7 +91,7 @@ public class GenerateComments : MonoBehaviour
             //コメントの３DオブジェクトのプレハブにあるTextMeshに入力されたコメントを代入したもののインスタンス化*/
             oneLineStraightAttackComment_TextPrefab.GetComponent<TextMesh>().text = commentReplaceAfter; 
             //oneLineStraightAttackComment.Text = commentReplaceAfter; 
-            GameObject newTextObj = Instantiate(oneLineStraightAttackComment_TextPrefab, new Vector3(playerPos.x, playerPos.y, playerPos.z), Quaternion.Euler(90, playerTransform.eulerAngles.y, 90)); //インスタンス化
+            GameObject newTextObj = Instantiate(oneLineStraightAttackComment_TextPrefab, new Vector3(playerPos.x, 1, playerPos.z), Quaternion.Euler(90, playerTransform.eulerAngles.y, 90)); //インスタンス化
             
 
         yield return new WaitForSeconds(0.1f);
