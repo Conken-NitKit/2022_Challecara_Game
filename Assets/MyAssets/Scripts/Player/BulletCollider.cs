@@ -9,9 +9,9 @@ public class BulletCollider : MonoBehaviour
     
     private void OnTriggerEnter(Collider collider)
     {
+        Debug.Log(collider.name);
         if (collider.CompareTag("Enemy"))
         {
-            Debug.Log(GameObject.FindWithTag("Player").GetComponent<PlayerStatus>().nowPlayerAtk);
             collider.GetComponent<Enemy>()
                 .AddedDamage(GameObject.FindWithTag("Player").GetComponent<PlayerStatus>().nowPlayerAtk * bulletAtk);
         }

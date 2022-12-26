@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5094585975224126119}
   - component: {fileID: 411133158997652626}
   - component: {fileID: 3357956484524844341}
+  - component: {fileID: 7668204997798196096}
   m_Layer: 0
   m_Name: OneLineStraightAttackComment_TextPrefab
   m_TagString: Untagged
@@ -85,7 +86,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5504908394044153005}
-  m_Text: "\u304A\u308F\u308F\u308F"
+  m_Text: "\u25A1\u25A1\u25A1\u25A1"
   m_OffsetZ: 0
   m_CharacterSize: 0.1
   m_LineSpacing: 1
@@ -107,7 +108,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5504908394044153005}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 6.334652, y: 1.4523443, z: 0}
@@ -157,3 +158,16 @@ MonoBehaviour:
   commentSpeed: 500
   oneLineStraightAttackComment_Text: {fileID: 5504908394044153043}
   oneLineStraightAttackComment_Rigidbody: {fileID: 411133158997652626}
+--- !u!114 &7668204997798196096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5504908394044153005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e735ff80e33ee444591d03eea1f839be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletAtk: 10
