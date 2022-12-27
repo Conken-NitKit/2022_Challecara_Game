@@ -1651,6 +1651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: {fileID: 0}
+  youtube: {fileID: 0}
 --- !u!1 &1320350173
 GameObject:
   m_ObjectHideFlags: 0
@@ -2418,6 +2419,10 @@ PrefabInstance:
       propertyPath: terrain
       value: 
       objectReference: {fileID: 1132639782}
+    - target: {fileID: 1643241552, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1248815240492774, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: m_Name
       value: PolyArtWizardStandardMat
@@ -2678,6 +2683,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1765142550 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1248815240492774, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+  m_PrefabInstance: {fileID: 1643241549}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1765142551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765142550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e2ed8dcb2aed4c9ab2b05f6730daa48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 1765142555}
+  _terrain: {fileID: 1132639782}
+  _speed: 4
+--- !u!95 &1765142555 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95538263452871118, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+  m_PrefabInstance: {fileID: 1643241549}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1898512803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3049,6 +3079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e735ff80e33ee444591d03eea1f839be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletAtk: 0
 --- !u!1001 &1951946604
 PrefabInstance:
   m_ObjectHideFlags: 0
