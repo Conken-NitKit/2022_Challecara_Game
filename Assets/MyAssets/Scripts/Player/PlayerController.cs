@@ -1,82 +1,107 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 /// <summary>
-/// プレイヤーの移動処理クラス
+/// プレイヤーのコントローラークラス
+/// これアタッチするだけで動いたりします
+/// 必要ならTerrain、Animatorのアタッチをしてください。
 /// </summary>
-
 public class PlayerController : MonoBehaviour
 {
-    float horizontalKeyInput = 0;
-    float verticalKeyInput = 0;
-
-    [SerializeField]
-    private float playerMoveSpeed = 5;
-    
-    [SerializeField]
-    private float playerRollSpeed = 120f;
-
-    Vector2 StartTouch = new Vector2();
-    Vector2 TouchInput = new Vector2();
-
-    private Vector3 moveVector;
-    
-    private Vector3 latestPos = new Vector3();
-    
-    private string groundTag = "Ground";
-    private bool isGround = false;
-
-    bool isTouch = false;
-    
-    [SerializeField]
-    private Transform _camera;
-    
     private static readonly int IS_MOVE_HASH = Animator.StringToHash("Walk");
+    
+    [SerializeField]
+    private Animator _animator;
+    
+    [SerializeField]
+    private Terrain _terrain;
 
-    [SerializeField] Animator anim;
-    [SerializeField] Rigidbody rigid;
+    [SerializeField]
+    private float _speed = 5f;
 
-    [SerializeField] private Terrain terrain;
- 
-
-    void Update()
+    [SerializeField]
+    private float _rollSpeed = 180f;
+    
+    private void Update()
     {
-        moveVector = Vector3.zero;
+        ControlMove();
+        ControlDirection();
+    }
 
-        bool isKeyInput = ( Input.GetAxis( "Horizontal" ) != 0 || Input.GetAxis( "Vertical" ) != 0 || TouchInput != Vector2.zero );
+    /// <summary>
+    /// 実際にプレイヤーを動かすメソッド
+    /// </summary>
+    private void ControlMove()
+    {
+        Vector3 moveVector = GetMoveVertical();
+        bool isMove = moveVector != Vector3.zero;
         
-        if (isKeyInput)
+        if (_animator != null)
         {
-            anim.SetBool ( IS_MOVE_HASH, true );
+            _animator.SetBool(IS_MOVE_HASH, isMove);
         }
-        else
+        
+        if (isMove)
         {
-            anim.SetBool ( IS_MOVE_HASH, false );
-        }
-
-        if( isKeyInput )
-        {
-            moveVector += transform.forward * Input.GetAxis( "Vertical" );
-            moveVector += transform.right * Input.GetAxis( "Horizontal" );
-            Vector3 moveDelta;
-            moveDelta = moveVector * Time.deltaTime * playerMoveSpeed;
-
-            Vector3 taragetPosition = transform.position + moveDelta;
-            taragetPosition.y = terrain.SampleHeight(taragetPosition);
-
-            moveDelta = taragetPosition - transform.position;
-            moveDelta = moveDelta.normalized * Time.deltaTime * playerMoveSpeed;
-
-            transform.position += moveDelta;
-            latestPos = transform.position;
+            transform.position += moveVector * Time.deltaTime * _speed;
             
-            Quaternion lookRotation = Quaternion.LookRotation(
-                moveVector);
-            transform.rotation = Quaternion.RotateTowards(
-                transform.rotation,
-                lookRotation, Time.deltaTime * playerRollSpeed);
+
+            // テレインに沿って高さを合わせる
+            if (_terrain != null)
+            {
+                Vector3 position = transform.position;
+                position.y = _terrain.SampleHeight(position);
+                transform.position = position;
+            }
         }
+        
+    }
+
+    /// <summary>
+    /// プレイヤーの方向を動かすクラス
+    /// </summary>
+    private void ControlDirection()
+    {
+        transform.Rotate(GetHorizontal() * Time.deltaTime * _rollSpeed);
+    }
+
+    /// <summary>
+    /// WS、十字の前後のKeyを取得
+    /// </summary>
+    /// <returns>前後の動きのベクターを返す</returns>
+    private Vector3 GetMoveVertical()
+    {
+        Vector3 moveVector = Vector3.zero;
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        {
+            moveVector += transform.forward;
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        {
+            moveVector += -1 * transform.forward;
+        }
+        return moveVector.normalized;
+    }
+
+    /// <summary>
+    /// AD、十字の左右のKeyを取得
+    /// </summary>
+    /// <returns>左右の方向の動きのベクターを返す</returns>
+    private Vector3 GetHorizontal()
+    {
+        Vector3 moveVector = Vector3.zero;
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
+            moveVector += new Vector3(0, 1, 0);
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            moveVector += new Vector3(0, -1, 0);
+        }
+
+        return moveVector.normalized;
     }
 }
