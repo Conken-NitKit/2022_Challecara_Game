@@ -13,7 +13,10 @@ public class PlayerController1 : MonoBehaviour
     private Terrain _terrain;
 
     [SerializeField]
-    private float _speed = 3f;
+    private float _speed = 4f;
+
+    [SerializeField]
+    private float _rollSpeed = 4f;
     
     private void Update()
     {
@@ -23,7 +26,7 @@ public class PlayerController1 : MonoBehaviour
 
     private void ControlMove()
     {
-        Vector3 moveVector = GetMoveVector();
+        Vector3 moveVector = GetMoveVertical();
         bool isMove = moveVector != Vector3.zero;
         
         if (_animator != null)
@@ -49,10 +52,10 @@ public class PlayerController1 : MonoBehaviour
 
     private void ControlDirection()
     {
-        
+        transform.Rotate(GetHorizontal() * _rollSpeed);
     }
 
-    private Vector3 GetMoveVector()
+    private Vector3 GetMoveVertical()
     {
         Vector3 moveVector = Vector3.zero;
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
@@ -64,6 +67,22 @@ public class PlayerController1 : MonoBehaviour
         {
             moveVector += -1 * transform.forward;
         }
+        return moveVector.normalized;
+    }
+
+    private Vector3 GetHorizontal()
+    {
+        Vector3 moveVector = Vector3.zero;
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
+            moveVector += new Vector3(0, 1, 0);
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            moveVector += new Vector3(0, -1, 0);
+        }
+
         return moveVector.normalized;
     }
 }

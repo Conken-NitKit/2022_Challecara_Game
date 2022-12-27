@@ -2703,6 +2703,7 @@ MonoBehaviour:
   _animator: {fileID: 1765142555}
   _terrain: {fileID: 1132639782}
   _speed: 4
+  _rollSpeed: 2
 --- !u!95 &1765142555 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 95538263452871118, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
