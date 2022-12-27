@@ -1,5 +1,10 @@
 # 2022_Challecara_Game
 
+### ゲームについて
+YoutubeLiveのコメントをリアルタイムで取得して、それを敵に放って生き残りを目指すゲームです。
+九州アプリチャレンジキャラバンで開発しました。
+
+[デモ動画](https://twitter.com/ITI0820/status/1607253941678661635?s=20&t=iBfxpUKS4YjxQ4xLo2Zt4A)
 ### フォルダ管理について
 
 
