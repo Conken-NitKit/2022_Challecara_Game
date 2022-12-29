@@ -4,6 +4,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System;
 using UniRx;
+using UnityEngine.PlayerLoop;
 
 public class Beholder : Enemy
 {
