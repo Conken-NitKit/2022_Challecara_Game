@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 
+/// <summary>
+/// 敵の攻撃処理
+/// </summary>
 public class AttackRange : MonoBehaviour
 {
     private bool isAttack = false;

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// BlackKnightのFactoryクラス
+/// </summary>
 public class BlackKnightFactory : EnemyFactory
 {
     private ArrayList enemys = new ArrayList();

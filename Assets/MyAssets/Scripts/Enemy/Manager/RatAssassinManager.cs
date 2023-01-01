@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using MyScript.Scene;
 
+/// <summary>
+///　RatAssassinの処理を発火させるクラス
+/// </summary>
 public class RatAssassinManager : MonoBehaviour
 {
     [SerializeField] 
@@ -26,6 +29,9 @@ public class RatAssassinManager : MonoBehaviour
         StartCoroutine(IncreaseEnemySpawn());
     }
 
+    /// <summary>
+    /// 敵の出現個数を増やす処理です
+    /// </summary>
     IEnumerator IncreaseEnemySpawn()
     {
         while (true)

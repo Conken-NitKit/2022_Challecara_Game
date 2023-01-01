@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// RatAssassinのFactoryクラス
+/// </summary>
 public class RatAssassinFactory : EnemyFactory
 {
     private ArrayList enemys = new ArrayList();

@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.AI;
 using UniRx;
 
+/// <summary>
+/// 敵の動きの処理です
+/// ステートパターン発火させてるから別の名前の方がいいかも
+/// </summary>
 public class EnemyMove : MonoBehaviour
 {
     [SerializeField]

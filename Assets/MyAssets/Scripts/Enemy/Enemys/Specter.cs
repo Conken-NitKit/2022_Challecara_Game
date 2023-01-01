@@ -4,6 +4,9 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System;
 
+/// <summary>
+/// Specterの個別処理
+/// </summary>
 public class Specter : Enemy
 {
     private static EnemyParams param = null;

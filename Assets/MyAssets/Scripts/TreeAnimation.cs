@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+/// <summary>
+/// 木のユッサユッサする感じのアニメーション
+/// こういう1行だけのアニメーション処理とかうまいことできないものか
+/// </summary>
 public class TreeAnimation : MonoBehaviour
 {
     void Start()

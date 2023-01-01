@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// FylingDemonのFactoryクラス
+/// </summary>
 public class FylingDemonFactory : EnemyFactory
 {
     private ArrayList enemys = new ArrayList();
