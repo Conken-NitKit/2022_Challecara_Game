@@ -6,6 +6,12 @@ using Cysharp.Threading.Tasks;
 using System;
 using UnityEditor;
 
+
+/// <summary>
+/// Stateパターン使ってみました
+/// Stateパターン的にこの処理どうなの？ってのがいくつかありますがまあ大丈夫でしょう
+/// 結構急ピッチでそのまま使っちゃってるところも多いですけど改良します
+/// </summary>
 public class EnemyState
 {
     public enum STATE
@@ -87,21 +93,10 @@ public class EnemyState
         }
         return this; // 現在のStateを返却
     }
-    
-    public bool CanSeePlayer()
-    {
-        Vector3 direction = player.position - enemy.transform.position;
 
-        float angle = Vector3.Angle(direction, enemy.transform.position);
-
-        if (direction.magnitude < visDist && angle < visAngle)
-        {
-            return true;
-        }
-
-        return false;
-    }
-
+    /// <summary>
+    /// プレイヤーが攻撃できるかどうかをブールで返す
+    /// </summary>
     public bool GetAttackPlayer()
     {
         Vector3 direction = player.position - enemy.transform.position;
@@ -112,6 +107,9 @@ public class EnemyState
         return false;
     }
 
+    /// <summary>
+    /// プレイヤーを見つめ続けるメソッド
+    /// </summary>
     public void LookAtPlayer()
     {
         Vector3 direction = player.position - enemy.transform.position;
@@ -123,6 +121,10 @@ public class EnemyState
             Time.deltaTime * rotationSpeed);
     }
 
+    /// <summary>
+    /// 攻撃待ちの処理
+    /// </summary>
+    /// <param name="seconds"></param>
     public async UniTask WaitAttack(float seconds)
     {
         canAttack = false;
@@ -136,6 +138,10 @@ public class EnemyState
     }
 }
 
+/// <summary>
+/// 棒立ちのステート
+/// 攻撃待ちの状態
+/// </summary>
 public class Idle : EnemyState
 {
     public Idle(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack, int _pursueSpeed) : base(_enemy, _agent, _player, _animator , _canAttack, _pursueSpeed)
@@ -182,6 +188,10 @@ public class Idle : EnemyState
     }
 }
 
+/// <summary>
+/// プレイヤーを追いかけるステート
+/// エネミーの基本状態だったりします
+/// </summary>
 public class Pursue : EnemyState
 {
     
@@ -222,6 +232,9 @@ public class Pursue : EnemyState
     }
 }
 
+/// <summary>
+/// プレイヤーを攻撃するステート
+/// </summary>
 public class Attack : EnemyState
 {
     public Attack(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack, int _pursueSpeed) : base(_enemy, _agent, _player, _animator , _canAttack, _pursueSpeed)
@@ -267,6 +280,11 @@ public class Attack : EnemyState
         base.Exit();
     }
 }
+
+/// <summary>
+/// 死んだ状態のステート
+/// 結局使えませんでした
+/// </summary>
 public class Die : EnemyState
 {
     public Die(GameObject _enemy, NavMeshAgent _agent, Transform _player, Animator _animator, bool _canAttack, int _pursueSpeed) : base(_enemy, _agent, _player, _animator , _canAttack, _pursueSpeed)

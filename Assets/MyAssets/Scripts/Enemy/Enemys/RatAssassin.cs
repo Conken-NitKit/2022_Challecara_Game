@@ -4,6 +4,9 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System;
 
+/// <summary>
+/// RatAssassinの個別処理
+/// </summary>
 public class RatAssassin : Enemy
 {
     private static EnemyParams param = null;

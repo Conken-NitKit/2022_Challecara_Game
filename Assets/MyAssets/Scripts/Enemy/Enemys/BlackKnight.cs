@@ -4,6 +4,9 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System;
 
+/// <summary>
+/// BlackKnightの個別処理
+/// </summary>
 public class BlackKnight : Enemy
 {
     private static EnemyParams param = null;

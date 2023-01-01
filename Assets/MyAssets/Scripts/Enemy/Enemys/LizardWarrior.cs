@@ -4,6 +4,9 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System;
 
+/// <summary>
+/// LizardWarriorの個別処理
+/// </summary>
 public class LizardWarrior : Enemy
 {
     private static EnemyParams param = null;

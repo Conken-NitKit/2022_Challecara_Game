@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 
+/// <summary>
+/// HPのスライダーです
+/// </summary>
 public class PlayerHPSlider : MonoBehaviour
 {
     [SerializeField]

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// LizardWarriorのFactoryクラス
+/// </summary>
 public class LizardWarriorFactory : EnemyFactory
 {
     private ArrayList enemys = new ArrayList();

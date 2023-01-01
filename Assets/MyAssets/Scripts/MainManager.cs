@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// メインゲームの初期化処理
+/// もっとうまいことできんものか
+/// </summary>
 public class MainManager : MonoBehaviour
 {
     [SerializeField]

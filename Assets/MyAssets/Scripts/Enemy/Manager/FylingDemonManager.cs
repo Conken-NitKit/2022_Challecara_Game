@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using MyScript.Scene;
 
+/// <summary>
+/// FylingDemonの処理を発火させるクラス
+/// </summary>
 public class FylingDemonManager : MonoBehaviour
 {
     [SerializeField] 
@@ -26,6 +29,9 @@ public class FylingDemonManager : MonoBehaviour
         StartCoroutine(IncreaseEnemySpawn());
     }
 
+    /// <summary>
+    /// 敵の出現個数を増やす処理です
+    /// </summary>
     IEnumerator IncreaseEnemySpawn()
     {
         while (true)

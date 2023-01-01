@@ -6,6 +6,9 @@ using System;
 using UniRx;
 using UnityEngine.PlayerLoop;
 
+/// <summary>
+/// Specterの個別処理
+/// </summary>
 public class Beholder : Enemy
 {
     private static EnemyParams param = null;

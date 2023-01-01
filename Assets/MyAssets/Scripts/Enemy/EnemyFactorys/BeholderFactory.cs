@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// BeholderのFactoryクラス
+/// </summary>
 public class BeholderFactory : EnemyFactory
 {
     private ArrayList enemys = new ArrayList();
